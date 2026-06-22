@@ -44,7 +44,5 @@ jobs:
           username: ${{ vars.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ vars.SSH_PORT }}
-          script: |
-            docker service update \
-              --force \
-              ${{ vars.APP_NAME }}
+      script: |
+        docker stack deploy -c /srv/apps/geduc/stack.yml apps
