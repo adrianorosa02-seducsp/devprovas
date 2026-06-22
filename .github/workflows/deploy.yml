@@ -15,6 +15,18 @@ jobs:
 
       - uses: actions/checkout@v4
 
+      - name: Preparar diretório no servidor
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ vars.SSH_HOST }}
+          username: ${{ vars.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ vars.SSH_PORT }}
+          script: |
+            sudo mkdir -p /srv/apps
+            sudo chown -R $USER:$USER /srv/apps
+            sudo chmod -R 775 /srv/apps
+
       - name: Sincronizar Arquivos
         uses: burnett01/rsync-deployments@7.0.2
         with:
