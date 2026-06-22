@@ -1,14 +1,14 @@
-[project]
-name = "devprovas"
+[tool.poetry]
+name = "geduc"
 version = "0.1.0"
 description = ""
-authors = [
-    {name = "Adriano Rosa",email = "adrianorosa02@prof.educacao.sp.gov.br"}
-]
-requires-python = ">=3.14"
-dependencies = [
-]
+authors = ["Adriano Rosa <adrianorosa02@prof.educacao.sp.gov.br>"]
+package-mode = false
 
+[tool.poetry.dependencies]
+python = ">=3.12,<4.0"
+fastapi = "^0.110.0"
+uvicorn = {extras = ["standard"], version = "^0.27.0"}
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
