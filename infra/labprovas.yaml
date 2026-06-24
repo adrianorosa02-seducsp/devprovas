@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  geduc:
+    image: ghcr.io/adrianorosa02-seducsp/inetz-python-runtime:v1.0.1
+    volumes:
+      - /srv/apps/geduc:/app
+    networks:
+      - dockermaster
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.geduc.rule=Host(`geduc.inetz.com.br`)
+        - traefik.http.routers.geduc.entrypoints=websecure
+        - traefik.http.routers.geduc.tls=true
+        - traefik.http.routers.geduc.tls.certresolver=letsencryptresolver
+        - traefik.http.services.geduc.loadbalancer.server.port=8000
+
+networks:
+  dockermaster:
+    external: true

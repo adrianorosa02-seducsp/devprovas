@@ -45,4 +45,4 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ vars.SSH_PORT }}
           script: |
-            docker stack deploy -c /srv/apps/geduc/stack.yml apps
+            docker stack deploy -c /srv/apps/geduc/infra/lablrovas.yaml apps
