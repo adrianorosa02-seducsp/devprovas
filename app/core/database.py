@@ -4,7 +4,10 @@ from sqlalchemy.orm import sessionmaker
 
 DATABASE_URL = "postgresql://appuser:appsenha@db.inetz.com.br:5432/appdb"
 
-engine = create_engine(DATABASE_URL)
+engine = create_engine(
+    DATABASE_URL,
+    connect_args={"options": "-c search_path=devprovas,public"}
+)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
