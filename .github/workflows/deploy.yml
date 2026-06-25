@@ -5,13 +5,10 @@ on:
     branches:
       - main
 
-env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: adrianorosa02-seducsp/inetz-python-runtime
-
 jobs:
 
-  build-and-deploy:
+  deploy:
+
     runs-on: ubuntu-latest
 
     permissions:
@@ -23,11 +20,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Generate Tag
-        id: vars
-        run: |
-          echo "IMAGE_TAG=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
-
       - name: Login GHCR
         uses: docker/login-action@v3
         with:
@@ -35,46 +27,37 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build Image
+      - name: Build image
         run: |
           docker build \
-            -t ghcr.io/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} \
-            -t ghcr.io/${{ env.IMAGE_NAME }}:latest \
+            -t ghcr.io/adrianorosa02-seducsp/geduc:latest \
+            -t ghcr.io/adrianorosa02-seducsp/geduc:${{ github.sha }} \
             .
 
-      - name: Push Image
+      - name: Push latest
         run: |
-          docker push ghcr.io/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
-          docker push ghcr.io/${{ env.IMAGE_NAME }}:latest
+          docker push ghcr.io/adrianorosa02-seducsp/geduc:latest
 
-      - name: Upload Project Files
-        uses: appleboy/scp-action@v0.1.7
+      - name: Push SHA
+        run: |
+          docker push ghcr.io/adrianorosa02-seducsp/geduc:${{ github.sha }}
+
+      - name: Deploy
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ vars.SSH_HOST }}
           username: ${{ vars.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
-          source: "."
-          target: "/srv/apps/geduc"
 
-      - name: Deploy Swarm
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ vars.SSH_HOST }}
-          username: ${{ vars.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
           script: |
 
-            export IMAGE_TAG=${{ env.IMAGE_TAG }}
+            docker login ghcr.io \
+              -u ${{ github.actor }} \
+              -p ${{ secrets.GHCR_TOKEN }}
 
-            cd /srv/apps/geduc
+            docker pull ghcr.io/adrianorosa02-seducsp/geduc:latest
 
-            docker pull ghcr.io/${{ env.IMAGE_NAME }}:${IMAGE_TAG}
-
-            export IMAGE_TAG=${IMAGE_TAG}
-
-            docker stack deploy \
-              --with-registry-auth \
-              -c infra/labprovas.yaml \
-              apps
-
-            docker service update --force apps_geduc
+            docker service update \
+              --image ghcr.io/adrianorosa02-seducsp/geduc:latest \
+              --force \
+              apps_geduc
