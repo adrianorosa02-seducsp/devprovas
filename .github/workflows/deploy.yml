@@ -1,65 +1,80 @@
-name: Deploy
+name: Deploy GEDUC
 
 on:
   push:
     branches:
       - main
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: adrianorosa02-seducsp/inetz-python-runtime
+
 jobs:
 
-  deploy:
-
+  build-and-deploy:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
 
     steps:
 
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Preparar diretório no servidor
+      - name: Generate Tag
+        id: vars
+        run: |
+          echo "IMAGE_TAG=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+
+      - name: Login GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build Image
+        run: |
+          docker build \
+            -t ghcr.io/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }} \
+            -t ghcr.io/${{ env.IMAGE_NAME }}:latest \
+            .
+
+      - name: Push Image
+        run: |
+          docker push ghcr.io/${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+          docker push ghcr.io/${{ env.IMAGE_NAME }}:latest
+
+      - name: Upload Project Files
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ vars.SSH_HOST }}
+          username: ${{ vars.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          source: "."
+          target: "/srv/apps/geduc"
+
+      - name: Deploy Swarm
         uses: appleboy/ssh-action@master
         with:
           host: ${{ vars.SSH_HOST }}
           username: ${{ vars.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
-          port: ${{ vars.SSH_PORT }}
           script: |
-            sudo mkdir -p /srv/apps
-            sudo chown -R $USER:$USER /srv/apps
-            sudo chmod -R 775 /srv/apps
 
-      - name: Sincronizar Arquivos
-        uses: burnett01/rsync-deployments@7.0.2
-        with:
-          switches: -avzr --delete
-          path: ./
-          remote_path: /srv/apps/${{ vars.APP_NAME }}
-          remote_host: ${{ vars.SSH_HOST }}
-          remote_user: ${{ vars.SSH_USER }}
-          remote_key: ${{ secrets.SSH_KEY }}
+            export IMAGE_TAG=${{ env.IMAGE_TAG }}
 
-      - name: Rebuild imagem
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ vars.SSH_HOST }}
-          username: ${{ vars.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          script: |
             cd /srv/apps/geduc
 
-            docker build \
-            -t ghcr.io/adrianorosa02-seducsp/inetz-python-runtime:v1.0.2 .
+            docker pull ghcr.io/${{ env.IMAGE_NAME }}:${IMAGE_TAG}
 
-            docker service update \
-            --force \
-            apps_geduc
-            
-      - name: Reiniciar Serviço
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ vars.SSH_HOST }}
-          username: ${{ vars.SSH_USER }}
-          key: ${{ secrets.SSH_KEY }}
-          port: ${{ vars.SSH_PORT }}
-          script: |
-            docker stack deploy -c /srv/apps/geduc/infra/labprovas.yaml apps
-                                   
+            export IMAGE_TAG=${IMAGE_TAG}
+
+            docker stack deploy \
+              --with-registry-auth \
+              -c infra/labprovas.yaml \
+              apps
+
+            docker service update --force apps_geduc
