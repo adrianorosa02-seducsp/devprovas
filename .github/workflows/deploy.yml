@@ -37,6 +37,22 @@ jobs:
           remote_user: ${{ vars.SSH_USER }}
           remote_key: ${{ secrets.SSH_KEY }}
 
+      - name: Rebuild imagem
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ vars.SSH_HOST }}
+          username: ${{ vars.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /srv/apps/geduc
+
+            docker build \
+            -t ghcr.io/adrianorosa02-seducsp/inetz-python-runtime:v1.0.2 .
+
+            docker service update \
+            --force \
+            apps_geduc
+            
       - name: Reiniciar Serviço
         uses: appleboy/ssh-action@master
         with:
