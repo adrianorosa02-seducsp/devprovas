@@ -70,6 +70,9 @@ def main() -> int:
     except error.HTTPError as exc:
         status = exc.code
         content = exc.read().decode("utf-8", errors="replace")
+    except error.URLError as exc:
+        print("Falha ao conectar:", exc.reason)
+        return 1
 
     print("Status:", status)
     try:
@@ -78,7 +81,7 @@ def main() -> int:
     except ValueError:
         print("Resposta não serializável como JSON:", content)
 
-    return 0 if response.ok else 1
+    return 0 if status < 400 else 1
 
 
 if __name__ == "__main__":
