@@ -6,8 +6,7 @@ import json
 import os
 import sys
 from pathlib import Path
-
-import requests
+from urllib import error, request
 
 try:
     from dotenv import load_dotenv
@@ -61,13 +60,23 @@ def main() -> int:
     }
 
     print(f"Enviando {len(payload)} aulas para {url}")
-    response = requests.post(url, headers=headers, data=json.dumps(payload))
+    body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+    req = request.Request(url, data=body, headers=headers, method="POST")
 
-    print("Status:", response.status_code)
     try:
-        print("Resposta:", json.dumps(response.json(), ensure_ascii=False, indent=2))
-    except ValueError:  # pragma: no cover
-        print("Resposta não serializável como JSON:", response.text)
+        with request.urlopen(req) as resp:
+            content = resp.read().decode("utf-8")
+            status = resp.status
+    except error.HTTPError as exc:
+        status = exc.code
+        content = exc.read().decode("utf-8", errors="replace")
+
+    print("Status:", status)
+    try:
+        decoded = json.loads(content)
+        print("Resposta:", json.dumps(decoded, ensure_ascii=False, indent=2))
+    except ValueError:
+        print("Resposta não serializável como JSON:", content)
 
     return 0 if response.ok else 1
 
