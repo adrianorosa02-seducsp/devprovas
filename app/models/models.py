@@ -1,7 +1,8 @@
 import uuid
 from datetime import date, datetime
+
 from sqlalchemy import Column, String, Text, Boolean, Integer, Date, DateTime, ForeignKey, DECIMAL, CHAR, UniqueConstraint
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.dialects.postgresql import UUID, VECTOR
 from sqlalchemy.orm import relationship
 from app.core.database import Base
 
@@ -175,3 +176,18 @@ class Resposta(Base):
     questao = relationship("Questao", back_populates="respostas")
     aluno = relationship("Usuario", back_populates="respostas")
     alternativa = relationship("Alternativa", back_populates="respostas")
+
+
+class AulaConteudo(Base):
+    __tablename__ = "aulas_conteudo"
+
+    id = Column(Integer, primary_key=True)
+    id_aula = Column(String(50), unique=True, nullable=False)
+    componente = Column(Text, nullable=False)
+    titulo = Column(Text)
+    competencia = Column(Text)
+    tem_roteiro = Column(Boolean, default=False, nullable=False)
+    conteudo_bruto = Column(Text, nullable=False)
+    embedding = Column(VECTOR(1536))
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)

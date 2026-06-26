@@ -11,6 +11,7 @@ from app.models.models import *
 def create_tables():
     with engine.connect() as conn:
         conn.execute(text("CREATE SCHEMA IF NOT EXISTS devprovas;"))
+        conn.execute(text("CREATE EXTENSION IF NOT EXISTS vector;"))
         conn.commit()
     Base.metadata.create_all(bind=engine)
     print("Tabelas criadas com sucesso!")
