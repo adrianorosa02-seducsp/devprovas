@@ -59,5 +59,6 @@ jobs:
 
             docker service update \
               --image ghcr.io/adrianorosa02-seducsp/geduc:latest \
+              --with-registry-auth \
               --force \
               apps_geduc
