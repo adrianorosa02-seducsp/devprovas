@@ -1,10 +1,8 @@
 version: "3.9"
 
 services:
-  geduc:
-    image: ghcr.io/adrianorosa02-seducsp/inetz-python-runtime:v1.0.1
-    volumes:
-      - /srv/apps/geduc:/app
+  apps_geduc:
+    image: ghcr.io/adrianorosa02-seducsp/geduc:latest
     networks:
       - dockermaster
     deploy:
