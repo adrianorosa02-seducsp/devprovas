@@ -73,18 +73,18 @@ jobs:
           host: ${{ vars.SSH_HOST }}
           username: ${{ vars.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
-        env:
-          DEPLOY_IMAGE: ${{ needs.build.outputs.image }}
-          SERVICE_NAME: ${{ env.SERVICE_NAME }}
-        script: |
-          docker login ghcr.io \
-            -u ${{ github.actor }} \
-            -p ${{ secrets.GHCR_TOKEN }}
+          script: |
+            docker login ghcr.io \
+              -u ${{ github.actor }} \
+              -p ${{ secrets.GHCR_TOKEN }}
 
-          docker pull "$DEPLOY_IMAGE"
+            docker pull "$DEPLOY_IMAGE"
 
-          docker service update \
-            --image "$DEPLOY_IMAGE" \
-            --with-registry-auth \
-            --force \
-            "$SERVICE_NAME"
+            docker service update \
+              --image "$DEPLOY_IMAGE" \
+              --with-registry-auth \
+              --force \
+              "$SERVICE_NAME"
+          envs: |
+            DEPLOY_IMAGE=${{ needs.build.outputs.image }}
+            SERVICE_NAME=${{ env.SERVICE_NAME }}
