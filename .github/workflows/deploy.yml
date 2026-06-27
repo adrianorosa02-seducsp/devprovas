@@ -69,6 +69,9 @@ jobs:
     steps:
       - name: Trigger remote deploy
         uses: appleboy/ssh-action@v1.0.3
+        env:
+          DEPLOY_IMAGE: ${{ needs.build.outputs.image }}
+          SERVICE_NAME: ${{ env.SERVICE_NAME }}
         with:
           host: ${{ vars.SSH_HOST }}
           username: ${{ vars.SSH_USER }}
@@ -85,6 +88,4 @@ jobs:
               --with-registry-auth \
               --force \
               "$SERVICE_NAME"
-          envs: |
-            DEPLOY_IMAGE=${{ needs.build.outputs.image }}
-            SERVICE_NAME=${{ env.SERVICE_NAME }}
+          envs: DEPLOY_IMAGE,SERVICE_NAME
