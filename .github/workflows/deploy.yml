@@ -83,9 +83,13 @@ jobs:
 
             docker pull "$DEPLOY_IMAGE"
 
+            # No seu workflow de deploy, adicione este comando:
             docker service update \
               --image "$DEPLOY_IMAGE" \
-              --with-registry-auth \
               --force \
+              --with-registry-auth \
+              --update-order start-first \
+              --update-failure-action rollback \
               "$SERVICE_NAME"
+
           envs: DEPLOY_IMAGE,SERVICE_NAME
