@@ -67,34 +67,68 @@ jobs:
           docker push "${REGISTRY}:latest"
           echo "image=${REGISTRY}:${GITHUB_SHA}" >> "$GITHUB_OUTPUT"
 
+  #deploy:
+  #  name: Deploy to Swarm
+  #  needs: build
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - name: Trigger remote deploy
+  #      uses: appleboy/ssh-action@v1.0.3
+  #      env:
+  #        DEPLOY_IMAGE: ${{ needs.build.outputs.image }}
+  #        SERVICE_NAME: ${{ env.SERVICE_NAME }}
+  #      with:
+  #        host: ${{ vars.SSH_HOST }}
+  #        username: ${{ vars.SSH_USER }}
+  #        key: ${{ secrets.SSH_KEY }}
+  #        script: |
+  #          docker login ghcr.io \
+  #            -u ${{ github.actor }} \
+  #            -p ${{ secrets.GHCR_TOKEN }}
+  #
+  #          docker pull "$DEPLOY_IMAGE"
+  #          docker stack deploy -c docker-compose.yml apps
+  #          ## No seu workflow de deploy, adicione este comando:
+  #          #docker service update \
+  #          #  --image "$DEPLOY_IMAGE" \
+  #          #  --force \
+  #          #  --with-registry-auth \
+  #          #  --update-order start-first \
+  #          #  --update-failure-action rollback \
+  #          #  "$SERVICE_NAME"
   deploy:
     name: Deploy to Swarm
     needs: build
     runs-on: ubuntu-latest
     steps:
+      # 1. Precisamos baixar o repo neste job também para ter acesso ao arquivo .yaml
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Copia o arquivo da pasta infra para o servidor
+      - name: Copy stack file to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ vars.SSH_HOST }}
+          username: ${{ vars.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          source: "infra/labprovas.yaml" # Arquivo na raiz do repo
+          target: "/home/${{ vars.SSH_USER }}/deploy" # Destino no servidor
+
+      # 3. Executa o deploy via SSH
       - name: Trigger remote deploy
         uses: appleboy/ssh-action@v1.0.3
         env:
           DEPLOY_IMAGE: ${{ needs.build.outputs.image }}
-          SERVICE_NAME: ${{ env.SERVICE_NAME }}
         with:
           host: ${{ vars.SSH_HOST }}
           username: ${{ vars.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            docker login ghcr.io \
-              -u ${{ github.actor }} \
-              -p ${{ secrets.GHCR_TOKEN }}
-
+            echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+            
             docker pull "$DEPLOY_IMAGE"
-            docker stack deploy -c docker-compose.yml apps
-            ## No seu workflow de deploy, adicione este comando:
-            #docker service update \
-            #  --image "$DEPLOY_IMAGE" \
-            #  --force \
-            #  --with-registry-auth \
-            #  --update-order start-first \
-            #  --update-failure-action rollback \
-            #  "$SERVICE_NAME"
-
+            
+            # Executa o deploy apontando para o arquivo copiado no passo anterior
+            docker stack deploy -c /home/${{ vars.SSH_USER }}/deploy/infra/labprovas.yaml apps
           envs: DEPLOY_IMAGE,SERVICE_NAME
