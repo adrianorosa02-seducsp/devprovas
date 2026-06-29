@@ -87,14 +87,14 @@ jobs:
               -p ${{ secrets.GHCR_TOKEN }}
 
             docker pull "$DEPLOY_IMAGE"
-
-            # No seu workflow de deploy, adicione este comando:
-            docker service update \
-              --image "$DEPLOY_IMAGE" \
-              --force \
-              --with-registry-auth \
-              --update-order start-first \
-              --update-failure-action rollback \
-              "$SERVICE_NAME"
+            docker stack deploy -c docker-compose.yml apps
+            ## No seu workflow de deploy, adicione este comando:
+            #docker service update \
+            #  --image "$DEPLOY_IMAGE" \
+            #  --force \
+            #  --with-registry-auth \
+            #  --update-order start-first \
+            #  --update-failure-action rollback \
+            #  "$SERVICE_NAME"
 
           envs: DEPLOY_IMAGE,SERVICE_NAME
