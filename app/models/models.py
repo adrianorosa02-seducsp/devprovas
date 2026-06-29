@@ -2,7 +2,9 @@ import uuid
 from datetime import date, datetime
 
 from sqlalchemy import Column, String, Text, Boolean, Integer, Date, DateTime, ForeignKey, DECIMAL, CHAR, UniqueConstraint
-from sqlalchemy.dialects.postgresql import UUID, VECTOR
+#from sqlalchemy.dialects.postgresql import UUID, VECTOR
+from sqlalchemy.dialects.postgresql import UUID
+from pgvector.sqlalchemy import Vector  # Note que o nome costuma ser Vector (com 'v' maiúsculo apenas no início)
 from sqlalchemy.orm import relationship
 from app.core.database import Base
 
