@@ -130,22 +130,28 @@ jobs:
             # Login
             echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u adrianorosa02-seducsp --password-stdin
   
-            # Força o pull (removendo aspas extras que podem causar o erro de formato)
+            # Força o pull
             docker pull ghcr.io/adrianorosa02-seducsp/geduc:${{ github.sha }}
   
-            # Descobre o nome real do serviço (o Swarm prefixa com o nome da stack)
-            # O comando abaixo vai listar os serviços que contenham 'geduc' no nome
-            SERVICE_ID=$(docker service ls --filter name=geduc -q)
+            # LISTA todos os serviços para podermos identificar o nome correto
+            echo "Lista de serviços atuais:"
+            docker service ls
   
-            if [ -z "$SERVICE_ID" ]; then
-              echo "Erro: Serviço não encontrado. Verifique o nome no 'docker service ls'"
+            # Tenta atualizar o serviço que possivelmente é o seu (ajuste o nome se souber, caso contrário, o log acima te dirá)
+            # Se o seu deploy foi feito com 'docker stack deploy -c ... apps', 
+            # o serviço provavelmente se chama 'apps_geduc' ou 'apps_apps_geduc'
+  
+            SERVICE_NAME=$(docker service ls --format "{{.Name}}" | grep -i "geduc" | head -n 1)
+  
+            if [ -z "$SERVICE_NAME" ]; then
+              echo "Nenhum serviço contendo 'geduc' foi encontrado na lista acima."
               exit 1
             fi
   
-            # Atualiza o serviço encontrado
+            echo "Atualizando serviço: $SERVICE_NAME"
+  
             docker service update \
               --image ghcr.io/adrianorosa02-seducsp/geduc:${{ github.sha }} \
               --with-registry-auth \
-              $SERVICE_ID
-
-          #envs: DEPLOY_IMAGE,SERVICE_NAME
+              "$SERVICE_NAME"
+          envs: DEPLOY_IMAGE,SERVICE_NAME
