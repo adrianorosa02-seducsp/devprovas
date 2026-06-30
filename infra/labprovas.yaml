@@ -2,7 +2,8 @@ version: "3.9"
 
 services:
   apps_geduc:
-    image: ghcr.io/adrianorosa02-seducsp/geduc:latest
+    image: ${DEPLOY_IMAGE}
+    //image: ghcr.io/adrianorosa02-seducsp/geduc:${{ github.sha }}
     networks:
       - dockermaster
     deploy:
