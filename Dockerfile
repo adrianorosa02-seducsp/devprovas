@@ -15,6 +15,7 @@ COPY pyproject.toml poetry.lock* ./
 RUN poetry install --no-interaction --no-ansi
 
 # copia aplicação
+ARG CACHE_DATE=2026-06-29
 COPY . .
 RUN ls -R /app
 EXPOSE 8000
