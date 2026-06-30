@@ -128,15 +128,24 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             # Login
-            echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-            
-            # Força o pull da imagem específica
-            docker pull "$REGISTRY:$IMAGE_TAG"
-            
-            # Atualiza o serviço diretamente com a nova imagem
-            # Isso é mais eficiente que o stack deploy para mudanças de imagem
+            echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u adrianorosa02-seducsp --password-stdin
+  
+            # Força o pull (removendo aspas extras que podem causar o erro de formato)
+            docker pull ghcr.io/adrianorosa02-seducsp/geduc:${{ github.sha }}
+  
+            # Descobre o nome real do serviço (o Swarm prefixa com o nome da stack)
+            # O comando abaixo vai listar os serviços que contenham 'geduc' no nome
+            SERVICE_ID=$(docker service ls --filter name=geduc -q)
+  
+            if [ -z "$SERVICE_ID" ]; then
+              echo "Erro: Serviço não encontrado. Verifique o nome no 'docker service ls'"
+              exit 1
+            fi
+  
+            # Atualiza o serviço encontrado
             docker service update \
-              --image "$REGISTRY:$IMAGE_TAG" \
+              --image ghcr.io/adrianorosa02-seducsp/geduc:${{ github.sha }} \
               --with-registry-auth \
-              apps_geduc
+              $SERVICE_ID
+
           #envs: DEPLOY_IMAGE,SERVICE_NAME
