@@ -116,19 +116,27 @@ jobs:
           target: "/home/${{ vars.SSH_USER }}/deploy" # Destino no servidor
 
       # 3. Executa o deploy via SSH
-      - name: Trigger remote deploy
+- name: Trigger remote deploy
         uses: appleboy/ssh-action@v1.0.3
         env:
-          DEPLOY_IMAGE: ${{ needs.build.outputs.image }}
+          # Injetamos o SHA como variável de ambiente
+          IMAGE_TAG: "${{ github.sha }}"
+          REGISTRY: "ghcr.io/adrianorosa02-seducsp/geduc"
         with:
           host: ${{ vars.SSH_HOST }}
           username: ${{ vars.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
+            # Login
             echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
             
-            docker pull "$DEPLOY_IMAGE"
+            # Força o pull da imagem específica
+            docker pull "$REGISTRY:$IMAGE_TAG"
             
-            # Executa o deploy apontando para o arquivo copiado no passo anterior
-            docker stack deploy -c /home/${{ vars.SSH_USER }}/deploy/infra/labprovas.yaml apps
-          envs: DEPLOY_IMAGE,SERVICE_NAME
+            # Atualiza o serviço diretamente com a nova imagem
+            # Isso é mais eficiente que o stack deploy para mudanças de imagem
+            docker service update \
+              --image "$REGISTRY:$IMAGE_TAG" \
+              --with-registry-auth \
+              apps_geduc
+          #envs: DEPLOY_IMAGE,SERVICE_NAME
