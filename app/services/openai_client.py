@@ -9,7 +9,7 @@ except ImportError:
     pass
 
 from openai import OpenAI
-from openai.error import OpenAIError
+from openai import OpenAIError, AuthenticationError
 
 DEFAULT_EMBEDDING_MODEL = "text-embedding-3-small"
 
