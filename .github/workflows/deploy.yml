@@ -116,7 +116,7 @@ jobs:
           target: "/home/${{ vars.SSH_USER }}/deploy" # Destino no servidor
 
       # 3. Executa o deploy via SSH
-- name: Trigger remote deploy
+      - name: Trigger remote deploy
         uses: appleboy/ssh-action@v1.0.3
         env:
           # Injetamos o SHA como variável de ambiente
