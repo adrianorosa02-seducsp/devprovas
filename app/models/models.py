@@ -23,6 +23,7 @@ class Escola(Base):
     usuarios = relationship("Usuario", back_populates="escola")
     turmas = relationship("Turma", back_populates="escola")
     disciplinas = relationship("Disciplina", back_populates="escola")
+    professores = relationship("Professor", back_populates="escola")
 
 
 class Usuario(Base):
@@ -39,10 +40,27 @@ class Usuario(Base):
     updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
 
     escola = relationship("Escola", back_populates="usuarios")
-    turmas = relationship("Turma", back_populates="professor", foreign_keys="Turma.professor_id")
-    provas = relationship("Prova", back_populates="professor")
+    professor_profile = relationship("Professor", back_populates="usuario", uselist=False)
     respostas = relationship("Resposta", back_populates="aluno")
     matriculas = relationship("Matricula", back_populates="aluno")
+
+
+class Professor(Base):
+    __tablename__ = "professores"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    usuario_id = Column(UUID(as_uuid=True), ForeignKey("usuarios.id", ondelete="CASCADE"), nullable=False, unique=True)
+    escola_id = Column(UUID(as_uuid=True), ForeignKey("escolas.id", ondelete="CASCADE"))
+    formacao = Column(Text)
+    especialidade = Column(Text)
+    ativo = Column(Boolean, default=True)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    usuario = relationship("Usuario", back_populates="professor_profile")
+    escola = relationship("Escola", back_populates="professores")
+    turmas = relationship("Turma", back_populates="professor")
+    provas = relationship("Prova", back_populates="professor")
 
 
 class Turma(Base):
@@ -53,13 +71,13 @@ class Turma(Base):
     serie = Column(String(50))
     turno = Column(String(20))
     escola_id = Column(UUID(as_uuid=True), ForeignKey("escolas.id", ondelete="CASCADE"))
-    professor_id = Column(UUID(as_uuid=True), ForeignKey("usuarios.id", ondelete="SET NULL"))
+    professor_id = Column(UUID(as_uuid=True), ForeignKey("professores.id", ondelete="SET NULL"))
     ativo = Column(Boolean, default=True)
     created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
     updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
 
     escola = relationship("Escola", back_populates="turmas")
-    professor = relationship("Usuario", back_populates="turmas", foreign_keys=[professor_id])
+    professor = relationship("Professor", back_populates="turmas")
     matriculas = relationship("Matricula", back_populates="turma")
     provas_turmas = relationship("ProvaTurma", back_populates="turma")
 
@@ -102,7 +120,7 @@ class Prova(Base):
     titulo = Column(String(255), nullable=False)
     descricao = Column(Text)
     disciplina_id = Column(UUID(as_uuid=True), ForeignKey("disciplinas.id", ondelete="SET NULL"))
-    professor_id = Column(UUID(as_uuid=True), ForeignKey("usuarios.id", ondelete="SET NULL"))
+    professor_id = Column(UUID(as_uuid=True), ForeignKey("professores.id", ondelete="SET NULL"))
     data_aplicacao = Column(Date)
     duracao_minutos = Column(Integer)
     peso = Column(DECIMAL(5, 2), default=1.0)
@@ -111,7 +129,7 @@ class Prova(Base):
     updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
 
     disciplina = relationship("Disciplina", back_populates="provas")
-    professor = relationship("Usuario", back_populates="provas")
+    professor = relationship("Professor", back_populates="provas")
     questoes = relationship("Questao", back_populates="prova", order_by="Questao.ordem")
     provas_turmas = relationship("ProvaTurma", back_populates="prova")
 

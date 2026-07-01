@@ -1,1 +1,9 @@
 from .aulas import router as aulas_router
+from .disciplinas import router as disciplinas_router
+from .escolas import router as escolas_router
+from .professores import router as professores_router
+from .provas import router as provas_router
+from .questoes import router as questoes_router
+from .respostas import router as respostas_router
+from .turmas import router as turmas_router
+from .usuarios import router as usuarios_router

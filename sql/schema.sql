@@ -20,13 +20,24 @@ CREATE TABLE IF NOT EXISTS usuarios (
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT now()
 );
 
+CREATE TABLE IF NOT EXISTS professores (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    usuario_id UUID UNIQUE NOT NULL REFERENCES usuarios(id) ON DELETE CASCADE,
+    escola_id UUID REFERENCES escolas(id) ON DELETE CASCADE,
+    formacao TEXT,
+    especialidade TEXT,
+    ativo BOOLEAN DEFAULT true,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT now(),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+);
+
 CREATE TABLE IF NOT EXISTS turmas (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     nome VARCHAR(100) NOT NULL,
     serie VARCHAR(50),
     turno VARCHAR(20) CHECK (turno IN ('manha', 'tarde', 'noite')),
     escola_id UUID REFERENCES escolas(id) ON DELETE CASCADE,
-    professor_id UUID REFERENCES usuarios(id) ON DELETE SET NULL,
+    professor_id UUID REFERENCES professores(id) ON DELETE SET NULL,
     ativo BOOLEAN DEFAULT true,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT now(),
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT now()
@@ -57,7 +68,7 @@ CREATE TABLE IF NOT EXISTS provas (
     titulo VARCHAR(255) NOT NULL,
     descricao TEXT,
     disciplina_id UUID REFERENCES disciplinas(id) ON DELETE SET NULL,
-    professor_id UUID REFERENCES usuarios(id) ON DELETE SET NULL,
+    professor_id UUID REFERENCES professores(id) ON DELETE SET NULL,
     data_aplicacao DATE,
     duracao_minutos INTEGER,
     peso DECIMAL(5,2) DEFAULT 1.0,
@@ -110,6 +121,8 @@ CREATE TABLE IF NOT EXISTS respostas (
 CREATE INDEX idx_usuarios_email ON usuarios(email);
 CREATE INDEX idx_usuarios_tipo ON usuarios(tipo);
 CREATE INDEX idx_usuarios_escola ON usuarios(escola_id);
+CREATE INDEX idx_professores_usuario ON professores(usuario_id);
+CREATE INDEX idx_professores_escola ON professores(escola_id);
 CREATE INDEX idx_turmas_escola ON turmas(escola_id);
 CREATE INDEX idx_turmas_professor ON turmas(professor_id);
 CREATE INDEX idx_matriculas_aluno ON matriculas(aluno_id);
