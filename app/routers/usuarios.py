@@ -6,6 +6,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.core.database import get_db
+from app.core.security import hash_password
 from app.models.models import Usuario
 from app.routers.common import apply_updates, get_model_or_404
 from app.schemas.academico import UsuarioCreate, UsuarioRead, UsuarioUpdate
@@ -15,7 +16,8 @@ router = APIRouter(prefix="/usuarios", tags=["usuarios"])
 
 @router.post("/", response_model=UsuarioRead, status_code=status.HTTP_201_CREATED)
 def create_usuario(payload: UsuarioCreate, db: Session = Depends(get_db)) -> Usuario:
-    usuario = Usuario(**payload.dict())
+    usuario_data = payload.dict(exclude={"senha"})
+    usuario = Usuario(**usuario_data, senha_hash=hash_password(payload.senha))
     db.add(usuario)
     db.commit()
     db.refresh(usuario)
@@ -37,7 +39,12 @@ def update_usuario(
     usuario_id: UUID, payload: UsuarioUpdate, db: Session = Depends(get_db)
 ) -> Usuario:
     usuario = get_model_or_404(db, Usuario, usuario_id)
-    apply_updates(usuario, payload)
+    update_data = payload.dict(exclude_unset=True)
+    senha = update_data.pop("senha", None)
+    if senha:
+        usuario.senha_hash = hash_password(senha)
+    if update_data:
+        apply_updates(usuario, UsuarioUpdate(**update_data))
     db.commit()
     db.refresh(usuario)
     return usuario

@@ -22,13 +22,13 @@ class UsuarioBase(BaseModel):
 
 
 class UsuarioCreate(UsuarioBase):
-    senha_hash: str = Field(..., min_length=8)
+    senha: str = Field(..., min_length=8)
 
 
 class UsuarioUpdate(BaseModel):
     nome: Optional[str] = Field(None, max_length=255)
     email: Optional[EmailStr] = None
-    senha_hash: Optional[str] = Field(None, min_length=8)
+    senha: Optional[str] = Field(None, min_length=8)
     tipo: Optional[TipoUsuario] = None
     escola_id: Optional[UUID] = None
     ativo: Optional[bool] = None
