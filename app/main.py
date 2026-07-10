@@ -5,6 +5,7 @@ from app.core.database import engine
 from app.routers import (
     aulas_router,
     auth_router,
+    bncc_router,
     disciplinas_router,
     escolas_router,
     professores_router,
@@ -18,6 +19,7 @@ from app.routers import (
 app = FastAPI(title="DevProvas API", version="0.1.0")
 app.include_router(aulas_router)
 app.include_router(auth_router)
+app.include_router(bncc_router)
 app.include_router(usuarios_router)
 app.include_router(professores_router)
 app.include_router(disciplinas_router)

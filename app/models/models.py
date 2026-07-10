@@ -3,11 +3,40 @@ from datetime import date, datetime
 
 from sqlalchemy import Column, String, Text, Boolean, Integer, Date, DateTime, ForeignKey, DECIMAL, CHAR, UniqueConstraint
 #from sqlalchemy.dialects.postgresql import UUID, VECTOR
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.dialects.postgresql import UUID, JSONB
 #from pgvector.sqlalchemy import Vector  # Note que o nome costuma ser Vector (com 'v' maiúsculo apenas no início)
 from sqlalchemy.orm import relationship
 from app.core.database import Base
 
+
+class MaterialDidatico(Base):
+    __tablename__ = "materiais_didaticos"
+    
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    
+    # Contexto do Payload
+    ano_referencia = Column(Integer, nullable=False)
+    bimestre = Column(Integer, nullable=False)
+    serie = Column(String(10), nullable=False)
+    componente = Column(String(50), nullable=False)
+    
+    # Dados da API
+    cod_cronograma = Column(Integer, nullable=False)
+    id_cronograma = Column(Integer, nullable=False)
+    titulo = Column(String(255))
+    referencia_id = Column(Integer)
+    tipo = Column(String(100))
+    ordenacao = Column(Integer) # Este será sua chave de ligação com a "Aula" do PDF
+    semana = Column(Integer)
+    aulas_com_tarefa = Column(Boolean)
+    link_url_youtube = Column(Text, nullable=True)
+    exibir_municipio = Column(Boolean)
+    
+    # Dados aninhados (Arquivos) armazenados como JSONB para flexibilidade total
+    arquivos = Column(JSONB) 
+    
+    # Campo extra para facilitar buscas
+    array_links_youtube = Column(Text)
 
 class Escola(Base):
     __tablename__ = "escolas"
@@ -198,16 +227,3 @@ class Resposta(Base):
     alternativa = relationship("Alternativa", back_populates="respostas")
 
 
-class AulaConteudo(Base):
-    __tablename__ = "aulas_conteudo"
-
-    id = Column(Integer, primary_key=True)
-    id_aula = Column(String(50), unique=True, nullable=False)
-    componente = Column(Text, nullable=False)
-    titulo = Column(Text)
-    competencia = Column(Text)
-    tem_roteiro = Column(Boolean, default=False, nullable=False)
-    conteudo_bruto = Column(Text, nullable=False)
-    #embedding = Column(VECTOR(1536))
-    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
-    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)

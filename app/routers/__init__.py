@@ -1,5 +1,6 @@
 from .aulas import router as aulas_router
 from .auth import router as auth_router
+from .bncc import router as bncc_router
 from .disciplinas import router as disciplinas_router
 from .escolas import router as escolas_router
 from .professores import router as professores_router
