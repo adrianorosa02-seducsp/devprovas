@@ -7,7 +7,7 @@ from uuid import UUID
 from fastapi import APIRouter, Depends, Query, HTTPException
 from sqlalchemy import select
 from sqlalchemy.orm import Session
-from pydantic import BaseModel, model_serializer
+from pydantic import BaseModel, model_validator
 
 from app.core.database import get_db
 from app.models.models import MaterialDidatico
@@ -50,25 +50,32 @@ class MaterialResponse(BaseModel):
     serie: str
     componente: str
 
-    @model_serializer(mode="wrap")
-    def serialize_model(self, handler, info):
-        data = handler(self)
-        # Map database model fields to response fields
-        if isinstance(info.data, MaterialDidatico):
-            m = info.data
-            data["codCronogramaAula"] = m.cod_cronograma
-            data["idCronogramaAula"] = m.id_cronograma
-            data["referenciaId"] = m.referencia_id
-            data["referencia"] = str(m.referencia_id) if m.referencia_id else None
-            data["ano"] = m.ano_referencia
-            data["aulasComTarefa"] = m.aulas_com_tarefa
-            data["linkUrlYoutube"] = m.link_url_youtube
-            data["exibirMunicipio"] = m.exibir_municipio
-            data["arrayLinksYoutube"] = m.array_links_youtube
-            data["id"] = str(m.id)
-            # Parse arquivos JSONB
-            if m.arquivos:
-                data["arquivos"] = m.arquivos
+    @model_validator(mode="before")
+    @classmethod
+    def map_fields(cls, data):
+        if isinstance(data, MaterialDidatico):
+            m = data
+            return {
+                "codCronogramaAula": m.cod_cronograma,
+                "idCronogramaAula": m.id_cronograma,
+                "titulo": m.titulo,
+                "referenciaId": m.referencia_id,
+                "referencia": str(m.referencia_id) if m.referencia_id else None,
+                "tipo": m.tipo,
+                "ordenacao": m.ordenacao,
+                "semana": m.semana,
+                "ano": m.ano_referencia,
+                "aulasComTarefa": m.aulas_com_tarefa,
+                "linkUrlYoutube": m.link_url_youtube,
+                "exibirMunicipio": m.exibir_municipio,
+                "arquivos": m.arquivos or [],
+                "arrayLinksYoutube": m.array_links_youtube,
+                "id": str(m.id),
+                "ano_referencia": m.ano_referencia,
+                "bimestre": m.bimestre,
+                "serie": m.serie,
+                "componente": m.componente,
+            }
         return data
 
     class Config:

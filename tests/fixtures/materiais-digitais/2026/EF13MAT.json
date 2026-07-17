@@ -1,0 +1,1401 @@
+{
+  "request": {
+    "key": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMT0dJTiI6InJnMjAwOTU0MjM0c3AiLCJOSUNLTkFNRSI6IkFEUklBTk9KVVNUSU4yMDA5NTQyIiwiQ0RfVVNVQVJJTyI6IjEwMDAwMDA5Njk2ODAwIiwidW5pcXVlX25hbWUiOiJQRVJGSVMiLCJQRVJGSVMiOiJbe1wiQ0RfUEVSRklMXCI6XCI0XCIsXCJOTV9QRVJGSUxcIjpcIlByb2Zlc3NvclwiLFwiTlJfQ09NUE9SVEFNRU5UT1wiOlwiNFwiLFwiQ09NUE9SVEFNRU5UT1wiOlwiUHJvZmVzc29yXCJ9LHtcIkNEX1BFUkZJTFwiOlwiMTY1MVwiLFwiTk1fUEVSRklMXCI6XCJQcm9mZXNzb3IgLSAgQXVsYSBFdmVudHVhbFwiLFwiTlJfQ09NUE9SVEFNRU5UT1wiOlwiNFwiLFwiQ09NUE9SVEFNRU5UT1wiOlwiUHJvZmVzc29yXCJ9LHtcIkNEX1BFUkZJTFwiOlwiMTY3NFwiLFwiTk1fUEVSRklMXCI6XCJQQUVWVC0gUHJvZmVzc29yIGRlIEFwb2lvIGFvIEVuc2lubyBUw6ljbmljbyBcIixcIk5SX0NPTVBPUlRBTUVOVE9cIjpcIjNcIixcIkNPTVBPUlRBTUVOVE9cIjpcIkVzY29sYVwifV0iLCJOQU1FIjoiQURSSUFOTyBKVVNUSU5PIFJPU0EiLCJNRVRPRE9MT0dJTiI6IkdPVkJSIiwiQ1BGIjoiMTEwNTczODE4MzciLCJFTUFJTCI6ImFkcmlhbm9AaWRlYWwudHVyLmJyIiwibmJmIjoxNzgzNzIwMDUyLCJleHAiOjE3ODM4MDY0NTIsImlhdCI6MTc4MzcyMDA1Mn0.1CpzJqFYPEqjIjDJ936oSTu6jlK52NLjQ1wOyrfw1H0",
+    "Ano": "2026",
+    "TipoEnsino": "1",
+    "Serie": "1",
+    "Bimestre": "3",
+    "Componente": "13",
+    "IsPrepara": false,
+    "IsPreparaReforco": false
+  },
+  "response": [
+    {
+      "codCronogramaAula": 146667,
+      "idCronogramaAula": 160197,
+      "titulo": "Livro do Estudante - Matemática",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Livro do Estudante",
+      "ordenacao": 1,
+      "semana": 1,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 160197,
+          "idArquivo": 1673996,
+          "nomeArquivo": "/160197/1673996.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/160197/1673996.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-06-16T17:25:44",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137800,
+      "idCronogramaAula": 151265,
+      "titulo": "FIGURAS GEOMÉTRICAS PLANAS I (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 1,
+      "semana": 1,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151265,
+          "idArquivo": 1640604,
+          "nomeArquivo": "/151265/1640604.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151265/1640604.pptx",
+          "baixou": true,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T15:07:15",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151265,
+          "idArquivo": 1640603,
+          "nomeArquivo": "/151265/1640603.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151265/1640603.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T15:07:14",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137817,
+      "idCronogramaAula": 151281,
+      "titulo": "FIGURAS GEOMÉTRICAS PLANAS II (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 2,
+      "semana": 1,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151281,
+          "idArquivo": 1640610,
+          "nomeArquivo": "/151281/1640610.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151281/1640610.pdf",
+          "baixou": true,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T15:08:58",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151281,
+          "idArquivo": 1640612,
+          "nomeArquivo": "/151281/1640612.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151281/1640612.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T15:08:58",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137818,
+      "idCronogramaAula": 151286,
+      "titulo": "CALENDÁRIO (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 3,
+      "semana": 1,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151286,
+          "idArquivo": 1640620,
+          "nomeArquivo": "/151286/1640620.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151286/1640620.pdf",
+          "baixou": true,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T15:10:48",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151286,
+          "idArquivo": 1640621,
+          "nomeArquivo": "/151286/1640621.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151286/1640621.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T15:10:48",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137819,
+      "idCronogramaAula": 151287,
+      "titulo": "ESTIMANDO MEDIDAS (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 4,
+      "semana": 1,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151287,
+          "idArquivo": 1640637,
+          "nomeArquivo": "/151287/1640637.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151287/1640637.pptx",
+          "baixou": true,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T15:12:29",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151287,
+          "idArquivo": 1640635,
+          "nomeArquivo": "/151287/1640635.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151287/1640635.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T15:12:28",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137820,
+      "idCronogramaAula": 151288,
+      "titulo": "NÚMEROS NATURAIS I (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 5,
+      "semana": 2,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151288,
+          "idArquivo": 1640643,
+          "nomeArquivo": "/151288/1640643.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151288/1640643.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T15:13:56",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151288,
+          "idArquivo": 1640642,
+          "nomeArquivo": "/151288/1640642.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151288/1640642.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T15:13:55",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137821,
+      "idCronogramaAula": 151289,
+      "titulo": "NÚMEROS NATURAIS II (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 6,
+      "semana": 2,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151289,
+          "idArquivo": 1640648,
+          "nomeArquivo": "/151289/1640648.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151289/1640648.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T15:15:49",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151289,
+          "idArquivo": 1640647,
+          "nomeArquivo": "/151289/1640647.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151289/1640647.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T15:15:48",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137822,
+      "idCronogramaAula": 151290,
+      "titulo": "COMPONDO E DECOMPONDO NÚMEROS (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 7,
+      "semana": 2,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151290,
+          "idArquivo": 1640655,
+          "nomeArquivo": "/151290/1640655.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151290/1640655.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T15:17:00",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151290,
+          "idArquivo": 1640654,
+          "nomeArquivo": "/151290/1640654.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151290/1640654.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T15:16:59",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137823,
+      "idCronogramaAula": 151291,
+      "titulo": "ADIÇÃO (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 8,
+      "semana": 2,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151291,
+          "idArquivo": 1640661,
+          "nomeArquivo": "/151291/1640661.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151291/1640661.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T15:18:52",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151291,
+          "idArquivo": 1640660,
+          "nomeArquivo": "/151291/1640660.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151291/1640660.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T15:18:51",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137824,
+      "idCronogramaAula": 151292,
+      "titulo": "SITUAÇÕES-PROBLEMA - ADIÇÃO E SUBTRAÇÃO I (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 9,
+      "semana": 3,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151292,
+          "idArquivo": 1640691,
+          "nomeArquivo": "/151292/1640691.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151292/1640691.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T15:31:41",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151292,
+          "idArquivo": 1640690,
+          "nomeArquivo": "/151292/1640690.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151292/1640690.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T15:31:40",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137825,
+      "idCronogramaAula": 151293,
+      "titulo": "SITUAÇÕES-PROBLEMA - ADIÇÃO E SUBTRAÇÃO II (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 10,
+      "semana": 3,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151293,
+          "idArquivo": 1640741,
+          "nomeArquivo": "/151293/1640741.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151293/1640741.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T15:58:33",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151293,
+          "idArquivo": 1640740,
+          "nomeArquivo": "/151293/1640740.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151293/1640740.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T15:58:26",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137826,
+      "idCronogramaAula": 151294,
+      "titulo": "SITUAÇÕES-PROBLEMA  - ADIÇÃO E SUBTRAÇÃO III (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 11,
+      "semana": 3,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151294,
+          "idArquivo": 1640750,
+          "nomeArquivo": "/151294/1640750.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151294/1640750.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:00:23",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151294,
+          "idArquivo": 1640749,
+          "nomeArquivo": "/151294/1640749.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151294/1640749.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:00:21",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137827,
+      "idCronogramaAula": 151295,
+      "titulo": "TABELAS E GRÁFICOS (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 12,
+      "semana": 3,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151295,
+          "idArquivo": 1640758,
+          "nomeArquivo": "/151295/1640758.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151295/1640758.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:02:04",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151295,
+          "idArquivo": 1640757,
+          "nomeArquivo": "/151295/1640757.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151295/1640757.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:02:03",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137828,
+      "idCronogramaAula": 151299,
+      "titulo": "FIGURAS GEOMÉTRICAS PLANAS I (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 13,
+      "semana": 4,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151299,
+          "idArquivo": 1640763,
+          "nomeArquivo": "/151299/1640763.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151299/1640763.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:03:15",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151299,
+          "idArquivo": 1640762,
+          "nomeArquivo": "/151299/1640762.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151299/1640762.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:03:13",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137829,
+      "idCronogramaAula": 151300,
+      "titulo": "FIGURAS GEOMÉTRICAS PLANAS II (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 14,
+      "semana": 4,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151300,
+          "idArquivo": 1640766,
+          "nomeArquivo": "/151300/1640766.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151300/1640766.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:04:16",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151300,
+          "idArquivo": 1640765,
+          "nomeArquivo": "/151300/1640765.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151300/1640765.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:04:15",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137837,
+      "idCronogramaAula": 151301,
+      "titulo": "COMPARANDO MEDIDAS (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 15,
+      "semana": 4,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151301,
+          "idArquivo": 1640768,
+          "nomeArquivo": "/151301/1640768.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151301/1640768.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:05:09",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151301,
+          "idArquivo": 1640767,
+          "nomeArquivo": "/151301/1640767.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151301/1640767.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:05:08",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137838,
+      "idCronogramaAula": 151302,
+      "titulo": "SISTEMA MONETÁRIO BRASILEIRO I (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 16,
+      "semana": 4,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151302,
+          "idArquivo": 1640783,
+          "nomeArquivo": "/151302/1640783.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151302/1640783.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:06:45",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151302,
+          "idArquivo": 1640779,
+          "nomeArquivo": "/151302/1640779.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151302/1640779.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:06:37",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137839,
+      "idCronogramaAula": 151303,
+      "titulo": "SISTEMA MONETÁRIO BRASILEIRO II (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 17,
+      "semana": 5,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151303,
+          "idArquivo": 1640787,
+          "nomeArquivo": "/151303/1640787.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151303/1640787.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:07:51",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151303,
+          "idArquivo": 1640786,
+          "nomeArquivo": "/151303/1640786.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151303/1640786.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:07:48",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137840,
+      "idCronogramaAula": 151304,
+      "titulo": "NÚMEROS NATURAIS (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 18,
+      "semana": 5,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151304,
+          "idArquivo": 1640789,
+          "nomeArquivo": "/151304/1640789.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151304/1640789.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:08:46",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151304,
+          "idArquivo": 1640788,
+          "nomeArquivo": "/151304/1640788.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151304/1640788.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:08:45",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137844,
+      "idCronogramaAula": 151309,
+      "titulo": "SITUAÇÕES-PROBLEMA: ADIÇÃO (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 19,
+      "semana": 5,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151309,
+          "idArquivo": 1640792,
+          "nomeArquivo": "/151309/1640792.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151309/1640792.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:09:44",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151309,
+          "idArquivo": 1640791,
+          "nomeArquivo": "/151309/1640791.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151309/1640791.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:09:43",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137847,
+      "idCronogramaAula": 151312,
+      "titulo": "SITUAÇÕES-PROBLEMA: SUBTRAÇÃO (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 20,
+      "semana": 5,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151312,
+          "idArquivo": 1640794,
+          "nomeArquivo": "/151312/1640794.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151312/1640794.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:10:57",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151312,
+          "idArquivo": 1640793,
+          "nomeArquivo": "/151312/1640793.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151312/1640793.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:10:51",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137849,
+      "idCronogramaAula": 151314,
+      "titulo": "SITUAÇÕES-PROBLEMA: ADIÇÃO E SUBTRAÇÃO I (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 21,
+      "semana": 6,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151314,
+          "idArquivo": 1640797,
+          "nomeArquivo": "/151314/1640797.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151314/1640797.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:12:09",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151314,
+          "idArquivo": 1640796,
+          "nomeArquivo": "/151314/1640796.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151314/1640796.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:12:08",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137851,
+      "idCronogramaAula": 151316,
+      "titulo": "SITUAÇÕES-PROBLEMA: ADIÇÃO E SUBTRAÇÃO II (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 22,
+      "semana": 6,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151316,
+          "idArquivo": 1640801,
+          "nomeArquivo": "/151316/1640801.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151316/1640801.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:13:06",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151316,
+          "idArquivo": 1640800,
+          "nomeArquivo": "/151316/1640800.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151316/1640800.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:13:05",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137853,
+      "idCronogramaAula": 151318,
+      "titulo": "SEQUÊNCIA NUMÉRICA (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 23,
+      "semana": 6,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151318,
+          "idArquivo": 1640809,
+          "nomeArquivo": "/151318/1640809.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151318/1640809.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:14:03",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151318,
+          "idArquivo": 1640810,
+          "nomeArquivo": "/151318/1640810.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151318/1640810.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:14:03",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137856,
+      "idCronogramaAula": 151321,
+      "titulo": "PROBABILIDADE E LEITURA DE TABELAS E GRÁFICOS (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 24,
+      "semana": 6,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151321,
+          "idArquivo": 1640816,
+          "nomeArquivo": "/151321/1640816.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151321/1640816.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:15:33",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151321,
+          "idArquivo": 1640815,
+          "nomeArquivo": "/151321/1640815.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151321/1640815.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:15:32",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137858,
+      "idCronogramaAula": 151323,
+      "titulo": "COMPARANDO NÚMEROS NATURAIS (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 25,
+      "semana": 7,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151323,
+          "idArquivo": 1640822,
+          "nomeArquivo": "/151323/1640822.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151323/1640822.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:16:26",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151323,
+          "idArquivo": 1640821,
+          "nomeArquivo": "/151323/1640821.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151323/1640821.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:16:25",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137859,
+      "idCronogramaAula": 151324,
+      "titulo": "COMPONDO E DECOMPONDO  NÚMEROS NATURAIS (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 26,
+      "semana": 7,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151324,
+          "idArquivo": 1640827,
+          "nomeArquivo": "/151324/1640827.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151324/1640827.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:17:24",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151324,
+          "idArquivo": 1640826,
+          "nomeArquivo": "/151324/1640826.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151324/1640826.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:17:23",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137861,
+      "idCronogramaAula": 151326,
+      "titulo": "CALENDÁRIO (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 27,
+      "semana": 7,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151326,
+          "idArquivo": 1640829,
+          "nomeArquivo": "/151326/1640829.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151326/1640829.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:18:17",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151326,
+          "idArquivo": 1640828,
+          "nomeArquivo": "/151326/1640828.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151326/1640828.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:18:15",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137865,
+      "idCronogramaAula": 151331,
+      "titulo": "TABELAS E GRÁFICOS (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 28,
+      "semana": 7,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151331,
+          "idArquivo": 1640835,
+          "nomeArquivo": "/151331/1640835.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151331/1640835.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:19:22",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151331,
+          "idArquivo": 1640834,
+          "nomeArquivo": "/151331/1640834.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151331/1640834.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:19:21",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137886,
+      "idCronogramaAula": 151353,
+      "titulo": "ADIÇÃO E SUBTRAÇÃO (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 29,
+      "semana": 8,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151353,
+          "idArquivo": 1640837,
+          "nomeArquivo": "/151353/1640837.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151353/1640837.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:20:33",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151353,
+          "idArquivo": 1640836,
+          "nomeArquivo": "/151353/1640836.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151353/1640836.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:20:32",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137887,
+      "idCronogramaAula": 151354,
+      "titulo": "COMPARANDO NÚMEROS (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 30,
+      "semana": 8,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151354,
+          "idArquivo": 1640841,
+          "nomeArquivo": "/151354/1640841.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151354/1640841.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:21:38",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151354,
+          "idArquivo": 1640840,
+          "nomeArquivo": "/151354/1640840.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151354/1640840.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:21:35",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137888,
+      "idCronogramaAula": 151355,
+      "titulo": "MULTIPLICAÇÃO E ADIÇÃO  DE PARCELAS IGUAIS (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 31,
+      "semana": 8,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151355,
+          "idArquivo": 1640845,
+          "nomeArquivo": "/151355/1640845.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151355/1640845.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:24:41",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151355,
+          "idArquivo": 1640846,
+          "nomeArquivo": "/151355/1640846.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151355/1640846.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:24:41",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 137889,
+      "idCronogramaAula": 151356,
+      "titulo": "VAMOS REPARTIR? (versão2)",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 32,
+      "semana": 8,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 151356,
+          "idArquivo": 1640844,
+          "nomeArquivo": "/151356/1640844.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151356/1640844.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:23:13",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 151356,
+          "idArquivo": 1640843,
+          "nomeArquivo": "/151356/1640843.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/151356/1640843.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-05-11T16:23:12",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    },
+    {
+      "codCronogramaAula": 147505,
+      "idCronogramaAula": 160873,
+      "titulo": "Atividade permanente Matific",
+      "referenciaId": 3,
+      "referencia": "3º Bimestre",
+      "tipo": "Aula",
+      "ordenacao": 33,
+      "semana": 8,
+      "ano": 2026,
+      "aulasComTarefa": false,
+      "linkUrlYoutube": null,
+      "exibirMunicipio": true,
+      "arquivos": [
+        {
+          "idCronograma": 160873,
+          "idArquivo": 1680443,
+          "nomeArquivo": "/160873/1680443.pptx",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/160873/1680443.pptx",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-06-25T15:19:49",
+          "tipoArquivo": 10
+        },
+        {
+          "idCronograma": 160873,
+          "idArquivo": 1680442,
+          "nomeArquivo": "/160873/1680442.pdf",
+          "linkDownload": "https://acervocmsp.educacao.sp.gov.br/160873/1680442.pdf",
+          "baixou": false,
+          "utilizou": false,
+          "avaliou": false,
+          "ativo": true,
+          "dtArquivo": "2026-06-25T15:19:48",
+          "tipoArquivo": 10
+        }
+      ],
+      "arrayLinksYoutube": "URL:, Tipo:, Nome Tipo:"
+    }
+  ],
+  "metadata": {
+    "capturedAt": "2026-07-10T14:30:00Z",
+    "source": "browser-devtools",
+    "totalItems": 34
+  }
+}

@@ -2,41 +2,10 @@ import uuid
 from datetime import date, datetime
 
 from sqlalchemy import Column, String, Text, Boolean, Integer, Date, DateTime, ForeignKey, DECIMAL, CHAR, UniqueConstraint
-#from sqlalchemy.dialects.postgresql import UUID, VECTOR
 from sqlalchemy.dialects.postgresql import UUID, JSONB
-#from pgvector.sqlalchemy import Vector  # Note que o nome costuma ser Vector (com 'v' maiúsculo apenas no início)
 from sqlalchemy.orm import relationship
 from app.core.database import Base
 
-
-class MaterialDidatico(Base):
-    __tablename__ = "materiais_didaticos"
-    
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    
-    # Contexto do Payload
-    ano_referencia = Column(Integer, nullable=False)
-    bimestre = Column(Integer, nullable=False)
-    serie = Column(String(10), nullable=False)
-    componente = Column(String(50), nullable=False)
-    
-    # Dados da API
-    cod_cronograma = Column(Integer, nullable=False)
-    id_cronograma = Column(Integer, nullable=False)
-    titulo = Column(String(255))
-    referencia_id = Column(Integer)
-    tipo = Column(String(100))
-    ordenacao = Column(Integer) # Este será sua chave de ligação com a "Aula" do PDF
-    semana = Column(Integer)
-    aulas_com_tarefa = Column(Boolean)
-    link_url_youtube = Column(Text, nullable=True)
-    exibir_municipio = Column(Boolean)
-    
-    # Dados aninhados (Arquivos) armazenados como JSONB para flexibilidade total
-    arquivos = Column(JSONB) 
-    
-    # Campo extra para facilitar buscas
-    array_links_youtube = Column(Text)
 
 class Escola(Base):
     __tablename__ = "escolas"
@@ -74,6 +43,21 @@ class Usuario(Base):
     matriculas = relationship("Matricula", back_populates="aluno")
 
 
+class Disciplina(Base):
+    __tablename__ = "disciplinas"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    nome = Column(String(100), nullable=False)
+    codigo = Column(String(20), unique=True)
+    escola_id = Column(UUID(as_uuid=True), ForeignKey("escolas.id", ondelete="CASCADE"))
+    ativo = Column(Boolean, default=True)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    escola = relationship("Escola", back_populates="disciplinas")
+    provas = relationship("Prova", back_populates="disciplina")
+
+
 class Professor(Base):
     __tablename__ = "professores"
 
@@ -109,21 +93,6 @@ class Turma(Base):
     professor = relationship("Professor", back_populates="turmas")
     matriculas = relationship("Matricula", back_populates="turma")
     provas_turmas = relationship("ProvaTurma", back_populates="turma")
-
-
-class Disciplina(Base):
-    __tablename__ = "disciplinas"
-
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    nome = Column(String(100), nullable=False)
-    codigo = Column(String(20), unique=True)
-    escola_id = Column(UUID(as_uuid=True), ForeignKey("escolas.id", ondelete="CASCADE"))
-    ativo = Column(Boolean, default=True)
-    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
-    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
-
-    escola = relationship("Escola", back_populates="disciplinas")
-    provas = relationship("Prova", back_populates="disciplina")
 
 
 class Matricula(Base):
@@ -227,3 +196,76 @@ class Resposta(Base):
     alternativa = relationship("Alternativa", back_populates="respostas")
 
 
+class MaterialDidatico(Base):
+    __tablename__ = "materiais_didaticos"
+    
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    
+    ano_referencia = Column(Integer, nullable=False)
+    bimestre = Column(Integer, nullable=False)
+    serie = Column(String(10), nullable=False)
+    componente = Column(String(50), nullable=False)
+    
+    cod_cronograma = Column(Integer, nullable=False)
+    id_cronograma = Column(Integer, nullable=False)
+    titulo = Column(String(255))
+    referencia_id = Column(Integer)
+    tipo = Column(String(100))
+    ordenacao = Column(Integer)
+    semana = Column(Integer)
+    aulas_com_tarefa = Column(Boolean)
+    link_url_youtube = Column(Text, nullable=True)
+    exibir_municipio = Column(Boolean)
+    
+    arquivos = Column(JSONB) 
+    
+    array_links_youtube = Column(Text)
+
+
+class AcervoDigital(Base):
+    __tablename__ = "acervo_digital"
+    
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    arquivo_id = Column(String(255), unique=True, nullable=False, index=True)
+    titulo = Column(String(255), nullable=False)
+    descricao = Column(Text)
+    tipo_arquivo = Column(String(100))
+    link_google_drive = Column(Text)
+    link_download_python = Column(Text)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
+
+
+class AprendizagemEssencial(Base):
+    __tablename__ = "aprendizagens_essenciais"
+    
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    acervo_id = Column(UUID(as_uuid=True), ForeignKey("acervo_digital.id", ondelete="CASCADE"), nullable=False, index=True)
+    
+    # Identificação
+    ae_codigo = Column(String(20), nullable=False)  # AE1, AE2, etc.
+    ano = Column(Integer, nullable=False, index=True)  # 1-5
+    codigo_material = Column(String(50), nullable=False, index=True)  # EFAIMAT, EFAFMAT, etc.
+    
+    # Conteúdo principal
+    descricao = Column(Text, nullable=False)
+    habilidade_priorizada = Column(Text)
+    habilidades_relacionadas = Column(JSONB)  # array de strings
+    conhecimentos_previos = Column(JSONB)  # array de strings
+    
+    # Para desenvolver (tabela estruturada)
+    blocos_tematicos = Column(JSONB)  # array de objetos
+    materiais_digitais = Column(JSONB)  # array de objetos
+    livros_estudante = Column(JSONB)  # array de objetos
+    
+    # Metadados
+    pagina_pdf = Column(Integer)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
+    
+    # Relacionamento
+    acervo = relationship("AcervoDigital", backref="aprendizagens_essenciais")
+    
+    __table_args__ = (
+        UniqueConstraint("acervo_id", "ae_codigo", "ano", name="uq_acervo_ae_ano"),
+    )

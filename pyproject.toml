@@ -3,7 +3,8 @@ name = "geduc"
 version = "0.1.0"
 description = ""
 authors = ["Adriano Rosa <adrianorosa02@prof.educacao.sp.gov.br>"]
-package-mode = false
+package-mode = true
+packages = [{include = "app"}]
 
 [tool.poetry.dependencies]
 python = ">=3.12,<4.0"

@@ -1,3 +1,32 @@
-from .models import Base
-from .models import Usuario, Escola, Disciplina # "Pais" primeiro
-from .models import Professor, MaterialDidatico          # "Filhos" depois
+from app.models.models import (
+    Escola,
+    Usuario,
+    Professor,
+    Disciplina,
+    Turma,
+    Matricula,
+    Disciplina,
+    Prova,
+    ProvaTurma,
+    Questao,
+    Alternativa,
+    Resposta,
+    MaterialDidatico,
+    Base,
+)
+
+__all__ = [
+    "Base",
+    "Escola",
+    "Usuario",
+    "Professor",
+    "Disciplina",
+    "Turma",
+    "Matricula",
+    "Prova",
+    "ProvaTurma",
+    "Questao",
+    "Alternativa",
+    "Resposta",
+    "MaterialDidatico",
+]
