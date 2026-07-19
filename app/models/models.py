@@ -236,36 +236,154 @@ class AcervoDigital(Base):
     updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
 
 
+import uuid
+from datetime import datetime
+
+from sqlalchemy import (
+    Column,
+    String,
+    Integer,
+    Text,
+    DateTime,
+    UniqueConstraint
+)
+
+from sqlalchemy.dialects.postgresql import UUID, JSONB
+from app.core.database import Base
+
+
 class AprendizagemEssencial(Base):
     __tablename__ = "aprendizagens_essenciais"
-    
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    acervo_id = Column(UUID(as_uuid=True), ForeignKey("acervo_digital.id", ondelete="CASCADE"), nullable=False, index=True)
-    
-    # Identificação
-    ae_codigo = Column(String(20), nullable=False)  # AE1, AE2, etc.
-    ano = Column(Integer, nullable=False, index=True)  # 1-5
-    codigo_material = Column(String(50), nullable=False, index=True)  # EFAIMAT, EFAFMAT, etc.
-    
-    # Conteúdo principal
-    descricao = Column(Text, nullable=False)
-    habilidade_priorizada = Column(Text)
-    habilidades_relacionadas = Column(JSONB)  # array de strings
-    conhecimentos_previos = Column(JSONB)  # array de strings
-    
-    # Para desenvolver (tabela estruturada)
-    blocos_tematicos = Column(JSONB)  # array de objetos
-    materiais_digitais = Column(JSONB)  # array de objetos
-    livros_estudante = Column(JSONB)  # array de objetos
-    
-    # Metadados
-    pagina_pdf = Column(Integer)
-    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
-    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
-    
-    # Relacionamento
-    acervo = relationship("AcervoDigital", backref="aprendizagens_essenciais")
-    
+
+    # =====================================================
+    # Chave Técnica
+    # =====================================================
+
+    id = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        default=uuid.uuid4
+    )
+
+    # =====================================================
+    # Contexto Pedagógico
+    # =====================================================
+
+    ano_referencia = Column(
+        Integer,
+        nullable=False,
+        index=True
+    )
+
+    etapa = Column(
+        String(20),
+        nullable=False,
+        index=True
+    )  # EFAI | EFAF
+
+    componente = Column(
+        String(50),
+        nullable=False,
+        index=True
+    )  # Matemática | Língua Portuguesa ...
+
+    ano = Column(
+        Integer,
+        nullable=False,
+        index=True
+    )  # 1..9
+
+    # =====================================================
+    # Identificação da AE
+    # =====================================================
+
+    id_ae = Column(
+        String(20),
+        nullable=False,
+        unique=True,
+        index=True
+    )  # EF01MAAE1
+
+    prefixo = Column(
+        String(10),
+        nullable=False,
+        index=True
+    )  # EF01MA
+
+    codigo_ae = Column(
+        String(10),
+        nullable=False
+    )  # AE1
+
+    descricao = Column(
+        Text,
+        nullable=False
+    )
+
+    # =====================================================
+    # BNCC
+    # =====================================================
+
+    habilidade_priorizada = Column(
+        String(20),
+        nullable=False,
+        index=True
+    )  # EF01MA14
+
+    habilidades_relacionadas = Column(
+        JSONB,
+        nullable=True
+    )
+
+    conhecimentos_previos = Column(
+        JSONB,
+        nullable=True
+    )
+
+    # =====================================================
+    # Avaliações Externas
+    # =====================================================
+
+    prova_paulista = Column(
+        JSONB,
+        nullable=True
+    )
+
+    saresp = Column(
+        JSONB,
+        nullable=True
+    )
+
+    # =====================================================
+    # Para desenvolver a aprendizagem
+    # =====================================================
+
+    desenvolvimento_aprendizagem = Column(
+        JSONB,
+        nullable=True
+    )
+
+    # =====================================================
+    # Auditoria
+    # =====================================================
+
+    created_at = Column(
+        DateTime(timezone=True),
+        default=datetime.utcnow,
+        nullable=False
+    )
+
+    updated_at = Column(
+        DateTime(timezone=True),
+        default=datetime.utcnow,
+        onupdate=datetime.utcnow,
+        nullable=False
+    )
+
     __table_args__ = (
-        UniqueConstraint("acervo_id", "ae_codigo", "ano", name="uq_acervo_ae_ano"),
+        UniqueConstraint(
+            "ano_referencia",
+            "id_ae",
+            name="uq_aprendizagem_essencial"
+        ),
     )

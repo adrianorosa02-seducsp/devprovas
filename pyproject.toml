@@ -19,6 +19,8 @@ email-validator = "^2.3.0"
 passlib = {extras = ["bcrypt"], version = "^1.7.4"}
 python-jose = {extras = ["cryptography"], version = "^3.3.0"}
 requests = "^2.34.2"
+pillow = "^12.3.0"
+pdfplumber = "^0.11.10"
 
 [tool.poetry.group.dev.dependencies]
 python-dotenv = "^1.0.0"
