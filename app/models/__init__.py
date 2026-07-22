@@ -12,6 +12,8 @@ from app.models.models import (
     Alternativa,
     Resposta,
     MaterialDidatico,
+    AprendizagemEssencial,
+    EscopoSequencia,
     Base,
 )
 
@@ -29,4 +31,6 @@ __all__ = [
     "Alternativa",
     "Resposta",
     "MaterialDidatico",
+    "AprendizagemEssencial",
+    "EscopoSequencia",
 ]

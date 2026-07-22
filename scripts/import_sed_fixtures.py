@@ -10,6 +10,34 @@ from app.core.database import SessionLocal, engine
 from sqlalchemy import Table, MetaData
 
 
+# Mapeamento do código SED do componente para o prefixo de 2 letras usado no escopo_sequencia
+# Formato do id_aula: EF01MA1 (EF=Ensino Fundamental, 01=1º ano, MA=Matemática, 1=Aula 1)
+COMPONENTE_PREFIXO_MAP = {
+    "13": "MA",   # Matemática
+    "1": "LP",    # Língua Portuguesa
+    "2": "CI",    # Ciências
+    "3": "HI",    # História
+    "4": "GE",    # Geografia
+    "5": "IN",    # Inglês
+    "6": "AR",    # Artes
+    "7": "EF",    # Educação Física
+}
+
+
+TIPO_ENSINO_PREFIXO_MAP = {
+    "1": "EF",   # Ensino Fundamental
+    "2": "EM",   # Ensino Médio
+}
+
+
+def gerar_id_aula(tipo_ensino: str, serie: str, componente: str, aula_numero: int) -> str:
+    """Gera o id_aula no formato EF01MA1."""
+    prefixo_tipo = TIPO_ENSINO_PREFIXO_MAP.get(str(tipo_ensino), "EF")
+    serie_formatada = str(serie).zfill(2)
+    prefixo_componente = COMPONENTE_PREFIXO_MAP.get(str(componente), str(componente).upper()[:2])
+    return f"{prefixo_tipo}{serie_formatada}{prefixo_componente}{aula_numero}"
+
+
 def import_fixture(fixture_path: Path, db_session):
     """Importa um arquivo fixture para a tabela materiais_didaticos."""
     
@@ -30,6 +58,7 @@ def import_fixture(fixture_path: Path, db_session):
     bimestre = int(request['Bimestre'])
     serie = request['Serie']
     componente = request['Componente']
+    tipo_ensino = request.get('TipoEnsino', '1')
     
     # Prepara registros para insert
     records = []
@@ -50,6 +79,14 @@ def import_fixture(fixture_path: Path, db_session):
             for arq in item['arquivos']
         ]
         
+        # Usa ordenacao como número da aula para TODOS os itens (garante id_aula único)
+        aula_numero = item.get('ordenacao', 0)
+        if aula_numero <= 0:
+            # Se não tem ordenacao válida, usa hash do cod_cronograma para garantir unicidade
+            aula_numero = abs(hash(str(item['codCronogramaAula']))) % 10000 + 1
+        
+        id_aula = gerar_id_aula(tipo_ensino, serie, componente, aula_numero)
+        
         record = {
             'id': uuid.uuid4(),
             'ano_referencia': ano,
@@ -59,7 +96,6 @@ def import_fixture(fixture_path: Path, db_session):
             'cod_cronograma': item['codCronogramaAula'],
             'id_cronograma': item['idCronogramaAula'],
             'titulo': item['titulo'],
-            'referencia_id': item['referenciaId'],
             'tipo': item['tipo'],
             'ordenacao': item['ordenacao'],
             'semana': item['semana'],
@@ -67,7 +103,8 @@ def import_fixture(fixture_path: Path, db_session):
             'link_url_youtube': item['linkUrlYoutube'],
             'exibir_municipio': item['exibirMunicipio'],
             'arquivos': arquivos,
-            'array_links_youtube': item['arrayLinksYoutube']
+            'array_links_youtube': item['arrayLinksYoutube'],
+            'id_aula': id_aula
         }
         records.append(record)
     

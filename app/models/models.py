@@ -220,6 +220,8 @@ class MaterialDidatico(Base):
     arquivos = Column(JSONB) 
     
     array_links_youtube = Column(Text)
+    
+    id_aula = Column(String(20), nullable=False, index=True)
 
 
 class AcervoDigital(Base):
@@ -387,3 +389,116 @@ class AprendizagemEssencial(Base):
             name="uq_aprendizagem_essencial"
         ),
     )
+
+
+class EscopoSequencia(Base):
+    __tablename__ = "escopo_sequencia"
+
+    id = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        default=uuid.uuid4
+    )
+
+    ano_referencia = Column(
+        Integer,
+        nullable=False,
+        index=True
+    )
+
+    etapa = Column(
+        String(20),
+        nullable=False,
+        index=True
+    )
+
+    componente = Column(
+        String(50),
+        nullable=False,
+        index=True
+    )
+
+    ano = Column(
+        Integer,
+        nullable=False,
+        index=True
+    )
+
+    bimestre = Column(
+        Integer,
+        nullable=True,
+        index=True
+    )  # 1..4
+
+    id_ae = Column(
+        String(20),
+        nullable=False,
+        index=True
+    )
+
+    prefixo_ae = Column(
+        String(10),
+        nullable=False,
+        index=True
+    )
+
+    id_aula = Column(
+        String(30),
+        nullable=False,
+        index=True
+    )
+
+    aula = Column(
+        String(20),
+        nullable=True
+    )
+
+    conteudo = Column(
+        Text,
+        nullable=True
+    )
+
+    objetivos_aprendizagem = Column(
+        Text,
+        nullable=True
+    )
+
+    habilidades = Column(
+        JSONB,
+        nullable=True
+    )
+
+    aprendizagem_essencial = Column(
+        JSONB,
+        nullable=True
+    )
+
+    pagina_pdf = Column(
+        Integer,
+        nullable=False
+    )
+
+    created_at = Column(
+        DateTime(timezone=True),
+        default=datetime.utcnow,
+        nullable=False
+    )
+
+    updated_at = Column(
+        DateTime(timezone=True),
+        default=datetime.utcnow,
+        onupdate=datetime.utcnow,
+        nullable=False
+    )
+
+    __table_args__ = (
+        UniqueConstraint(
+            "ano_referencia",
+            "id_aula",
+            "aula",
+            "pagina_pdf",
+            name="uq_escopo_sequencia"
+        ),
+    )
+
+

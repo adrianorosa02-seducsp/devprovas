@@ -133,3 +133,67 @@ CREATE INDEX idx_questoes_prova ON questoes(prova_id);
 CREATE INDEX idx_alternativas_questao ON alternativas(questao_id);
 CREATE INDEX idx_respostas_questao ON respostas(questao_id);
 CREATE INDEX idx_respostas_aluno ON respostas(aluno_id);
+
+CREATE TABLE IF NOT EXISTS materiais_didaticos (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id_aula VARCHAR(50) NOT NULL,
+    ano_referencia INTEGER NOT NULL,
+    bimestre INTEGER,
+    serie VARCHAR(50),
+    componente VARCHAR(100),
+    cod_cronograma VARCHAR(50),
+    id_cronograma UUID,
+    titulo VARCHAR(255) NOT NULL,
+    tipo VARCHAR(50),
+    ordenacao INTEGER,
+    semana INTEGER,
+    aulas_com_tarefa INTEGER,
+    arquivos JSONB,
+    link_url_youtube TEXT,
+    array_links_youtube TEXT[],
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT now(),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS escopo_sequencia (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id_aula VARCHAR(50) NOT NULL,
+    ano_referencia INTEGER NOT NULL,
+    etapa VARCHAR(50),
+    componente VARCHAR(100),
+    ano INTEGER,
+    id_ae VARCHAR(50),
+    prefixo_ae VARCHAR(50),
+    aula INTEGER,
+    conteudo TEXT,
+    objetivos_aprendizagem TEXT,
+    habilidades TEXT,
+    aprendizagem_essencial TEXT,
+    pagina_pdf INTEGER,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT now(),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS aprendizagens_essenciais (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id_aula VARCHAR(50) NOT NULL,
+    ano_referencia INTEGER NOT NULL,
+    etapa VARCHAR(50),
+    componente VARCHAR(100),
+    ano INTEGER,
+    id_ae VARCHAR(50),
+    prefixo_ae VARCHAR(50),
+    descricao_ae TEXT,
+    habilidades_bncc TEXT,
+    objetivos_aprendizagem TEXT,
+    observacoes TEXT,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT now(),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+);
+
+CREATE INDEX idx_materiais_id_aula ON materiais_didaticos(id_aula);
+CREATE INDEX idx_materiais_ano_referencia ON materiais_didaticos(ano_referencia);
+CREATE INDEX idx_escopo_id_aula ON escopo_sequencia(id_aula);
+CREATE INDEX idx_escopo_ano_referencia ON escopo_sequencia(ano_referencia);
+CREATE INDEX idx_ae_id_aula ON aprendizagens_essenciais(id_aula);
+CREATE INDEX idx_ae_ano_referencia ON aprendizagens_essenciais(ano_referencia);
