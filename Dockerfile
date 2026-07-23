@@ -9,14 +9,16 @@ RUN pip install poetry
 RUN poetry config virtualenvs.create false
 
 # copia dependências primeiro (cache layer)
-COPY pyproject.toml poetry.lock* ./
-
-# instala dependências
-RUN poetry install --no-interaction --no-ansi
-
-# copia aplicação
-ARG CACHE_DATE=2026-06-29
-COPY . .
+    COPY pyproject.toml poetry.lock* ./
+    
+    # instala dependências
+    RUN poetry install --no-interaction --no-ansi
+    
+    # cache bust para forçar rebuild da aplicação
+    ARG CACHE_DATE=2026-06-29
+    
+    # copia aplicação
+    COPY . .
 RUN ls -R /app
 EXPOSE 8000
 
