@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 from sqlalchemy.exc import OperationalError
 from app.core.database import engine
@@ -18,6 +19,23 @@ from app.routers import (
 )
 
 app = FastAPI(title="DevProvas API", version="0.1.0")
+
+# --- CONFIGURAÇÃO DE CORS ---
+origins = [
+    "https://lab.inetz.com.br",
+    "http://localhost",
+    "http://localhost:3000",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+# ----------------------------
+
 app.include_router(auth_router)
 app.include_router(usuarios_router)
 app.include_router(professores_router)
