@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 from sqlalchemy.exc import OperationalError
+from starlette.middleware.sessions import SessionMiddleware
 from app.core.database import engine
 from app.routers import (
     acervo_router,
@@ -17,6 +18,7 @@ from app.routers import (
     turmas_router,
     usuarios_router,
 )
+from app.admin import create_admin
 
 app = FastAPI(title="DevProvas API", version="0.1.0")
 
@@ -35,6 +37,17 @@ app.add_middleware(
     allow_headers=["*"],
 )
 # ----------------------------
+
+# Session middleware para SQLAdmin auth
+app.add_middleware(
+    SessionMiddleware,
+    secret_key="dev-secret-change-in-production",
+    session_cookie="devprovas_admin_session",
+    max_age=3600,
+)
+
+# Inicializa SQLAdmin
+admin = create_admin(app, engine)
 
 app.include_router(auth_router)
 app.include_router(usuarios_router)
