@@ -8,7 +8,7 @@ packages = [{include = "app"}]
 
 [tool.poetry.dependencies]
 python = ">=3.12,<4.0"
-fastapi = "^0.115.0"
+fastapi = "^0.110.0"
 uvicorn = {extras = ["standard"], version = "^0.27.0"}
 sqlalchemy = "^2.0.0"
 psycopg2-binary = "^2.9.0"
@@ -22,7 +22,7 @@ requests = "^2.34.2"
 pillow = "^12.3.0"
 pdfplumber = "^0.11.10"
 itsdangerous = "^2.2.0"
-sqladmin = "^0.29.0"
+sqladmin = "^0.20.0"
 python-multipart = "^0.0.32"
 starlette-session = "^0.4.3"
 asyncpg = "^0.31.0"
