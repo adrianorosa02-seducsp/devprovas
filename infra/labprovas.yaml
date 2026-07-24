@@ -6,6 +6,8 @@ services:
     //image: ghcr.io/adrianorosa02-seducsp/geduc:${{ github.sha }}
     networks:
       - dockermaster
+    enviroment:
+      - DATABASE_URL=postgresql://appuser:appsenha@postgres_app:5432/appdb
     deploy:
       labels:
         - traefik.enable=true
