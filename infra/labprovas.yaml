@@ -7,7 +7,7 @@ services:
     networks:
       - dockermaster
     enviroment:
-      - DATABASE_URL=postgresql://appuser:appsenha@postgres_app:5432/appdb
+      - DATABASE_URL=postgresql://appuser:appsenha@database_postgres_app:5432/appdb
     deploy:
       labels:
         - traefik.enable=true
