@@ -16,7 +16,10 @@ router = APIRouter(prefix="/usuarios", tags=["usuarios"])
 
 @router.post("/", response_model=UsuarioRead, status_code=status.HTTP_201_CREATED)
 def create_usuario(payload: UsuarioCreate, db: Session = Depends(get_db)) -> Usuario:
-    usuario_data = payload.dict(exclude={"senha"})
+    # Compatibilidade segura para Pydantic v1 e v2
+    dump_method = getattr(payload, "model_dump", None) or payload.dict
+    usuario_data = dump_method(exclude={"senha"})
+    
     usuario = Usuario(**usuario_data, senha_hash=hash_password(payload.senha))
     db.add(usuario)
     db.commit()
