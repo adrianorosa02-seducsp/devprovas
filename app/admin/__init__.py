@@ -17,7 +17,6 @@ def create_admin(app, engine: AsyncEngine = None) -> Admin:
         title="DevProvas Admin",
         base_url="/admin",
         authentication_backend=auth_backend,
-        templates_dir="app/templates/sqladmin",
     )
     
     register_admin_views(admin)
