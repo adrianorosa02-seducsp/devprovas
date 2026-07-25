@@ -2,12 +2,11 @@ import os
 from datetime import datetime, timedelta
 from typing import Literal, Optional
 
+import bcrypt
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
-from passlib.context import CryptContext
 from pydantic import BaseModel
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
 
 SECRET_KEY = os.getenv("JWT_SECRET_KEY", "devprovas-change-me")
@@ -27,16 +26,22 @@ class TokenPayload(BaseModel):
 
 
 def hash_password(password: str) -> str:
-    # Trunca a senha para 72 bytes para evitar o limite do bcrypt
+    # bcrypt tem limite de 72 bytes - trunca se necessário
     password_bytes = password.encode("utf-8")
     if len(password_bytes) > 72:
-        password = password_bytes[:72].decode("utf-8", errors="ignore")
+        password_bytes = password_bytes[:72]
     
-    return pwd_context.hash(password)
+    hashed = bcrypt.hashpw(password_bytes, bcrypt.gensalt())
+    return hashed.decode("utf-8")
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    return pwd_context.verify(plain_password, hashed_password)
+    # bcrypt tem limite de 72 bytes - trunca se necessário (deve corresponder ao hash)
+    password_bytes = plain_password.encode("utf-8")
+    if len(password_bytes) > 72:
+        password_bytes = password_bytes[:72]
+    
+    return bcrypt.checkpw(password_bytes, hashed_password.encode("utf-8"))
 
 
 def create_access_token(subject: str, scope: str, expires_delta: Optional[timedelta] = None) -> str:

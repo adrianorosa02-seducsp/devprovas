@@ -5,7 +5,7 @@ from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 from sqlalchemy.exc import OperationalError, SQLAlchemyError
-from app.core.database import engine
+from app.core.database import async_engine
 from app.routers import (
     acervo_router,
     aprendizagem_router,
@@ -20,12 +20,16 @@ from app.routers import (
     turmas_router,
     usuarios_router,
 )
+from app.admin import create_admin
 
 # Configuração básica de logging do Python
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("uvicorn.error")
 
 app = FastAPI(title="DevProvas API", version="0.1.0")
+
+# --- Inicializa Admin ---
+create_admin(app, engine=async_engine)
 
 # --- CONFIGURAÇÃO DE CORS ---
 origins = [
@@ -97,7 +101,7 @@ def root():
 @app.get("/health")
 def health():
     try:
-        with engine.connect() as conn:
+        with async_engine.sync_engine.connect() as conn:
             conn.execute(text("SELECT 1"))
         return {"status": "healthy", "database": "connected"}
     except OperationalError:

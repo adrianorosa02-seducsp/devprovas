@@ -1,13 +1,13 @@
 from sqladmin import Admin
 from sqlalchemy.ext.asyncio import AsyncEngine
 
-from app.core.database import engine
+from app.core.database import async_engine
 from app.admin.auth import AdminAuth
 from app.admin.views import register_admin_views
 
 
 def create_admin(app, engine: AsyncEngine = None) -> Admin:
-    engine = engine or engine
+    engine = engine or async_engine
     
     auth_backend = AdminAuth(secret_key="dev-secret-change-in-production")
     

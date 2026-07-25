@@ -42,6 +42,14 @@ class Usuario(Base):
     respostas = relationship("Resposta", back_populates="aluno")
     matriculas = relationship("Matricula", back_populates="aluno")
 
+    @property
+    def senha(self):
+        raise AttributeError("senha não é legível")
+
+    @senha.setter
+    def senha(self, value):
+        self._plain_password = value
+
 
 class Disciplina(Base):
     __tablename__ = "disciplinas"
