@@ -22,7 +22,7 @@ class UsuarioBase(BaseModel):
 
 
 class UsuarioCreate(UsuarioBase):
-    senha: str = Field(..., min_length=8)
+    senha: str = Field(..., min_length=8, max_length=72)
 
 
 class UsuarioUpdate(BaseModel):
