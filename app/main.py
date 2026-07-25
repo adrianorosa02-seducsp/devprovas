@@ -1,8 +1,10 @@
-from fastapi import FastAPI
+import logging
+from fastapi import FastAPI, Request, status
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
-from sqlalchemy.exc import OperationalError
-from starlette.middleware.sessions import SessionMiddleware
+from sqlalchemy.exc import OperationalError, SQLAlchemyError
 from app.core.database import engine
 from app.routers import (
     acervo_router,
@@ -18,7 +20,10 @@ from app.routers import (
     turmas_router,
     usuarios_router,
 )
-from app.admin import create_admin
+
+# Configuração básica de logging do Python
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("uvicorn.error")
 
 app = FastAPI(title="DevProvas API", version="0.1.0")
 
@@ -38,17 +43,38 @@ app.add_middleware(
 )
 # ----------------------------
 
-# Session middleware para SQLAdmin auth
-app.add_middleware(
-    SessionMiddleware,
-    secret_key="dev-secret-change-in-production",
-    session_cookie="devprovas_admin_session",
-    max_age=3600,
-)
+# --- TRATAMENTO CUSTOMIZADO DE ERROS (LOGS DETALHADOS) ---
 
-# Inicializa SQLAdmin
-admin = create_admin(app, engine)
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request: Request, exc: RequestValidationError):
+    """Captura erros de validação do Pydantic ( payloads incorretos )"""
+    logger.error(f"Erro de Validação Pydantic na rota {request.url}: {exc.errors()}")
+    return JSONResponse(
+        status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+        content={"detail": exc.errors(), "message": "Erro de validação nos dados enviados."},
+    )
 
+@app.exception_handler(SQLAlchemyError)
+async def sqlalchemy_exception_handler(request: Request, exc: SQLAlchemyError):
+    """Captura erros relacionados ao banco de dados"""
+    logger.error(f"Erro de Banco de Dados na rota {request.url}: {str(exc)}")
+    return JSONResponse(
+        status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+        content={"detail": "Erro interno no banco de dados.", "error": str(exc)},
+    )
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    """Captura qualquer outro erro 500 inesperado"""
+    logger.error(f"Erro Interno Não Tratado na rota {request.url}: {str(exc)}", exc_info=True)
+    return JSONResponse(
+        status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+        content={"detail": "Erro interno inesperado no servidor.", "error": str(exc)},
+    )
+
+# --------------------------------------------------------
+
+# Inclusão das rotas
 app.include_router(auth_router)
 app.include_router(usuarios_router)
 app.include_router(professores_router)
