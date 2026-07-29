@@ -44,4 +44,3 @@ def sync_mapa(payload: MapaGDriveSync, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(novo)
     return novo
-*** End Patch

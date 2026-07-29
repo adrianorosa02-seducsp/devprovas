@@ -13,6 +13,4 @@ class MapaGDriveRead(BaseModel):
     alias_professor: str
     estrutura: Dict[str, Any]
     ativo: bool
-
-    class Config:
-        orm_mode = True
+    model_config = {"from_attributes": True}
