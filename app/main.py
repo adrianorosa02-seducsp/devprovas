@@ -19,6 +19,7 @@ from app.routers import (
     respostas_router,
     turmas_router,
     usuarios_router,
+    mapa_gdrive_router,
 )
 from app.admin import create_admin
 
@@ -91,6 +92,7 @@ app.include_router(disciplinas_router)
 app.include_router(materiais_router)
 app.include_router(acervo_router)
 app.include_router(aprendizagem_router)
+app.include_router(mapa_gdrive_router)
 
 
 @app.get("/")

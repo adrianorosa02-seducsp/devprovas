@@ -84,6 +84,20 @@ class Professor(Base):
     provas = relationship("Prova", back_populates="professor")
 
 
+class MapaGDrive(Base):
+    __tablename__ = "mapa_gdrive"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    professor_id = Column(UUID(as_uuid=True), ForeignKey("professores.id", ondelete="CASCADE"), nullable=False)
+    alias_professor = Column(String(255), nullable=False, index=True)
+    estrutura = Column(JSONB, nullable=False)
+    ativo = Column(Boolean, default=True)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    professor = relationship("Professor", backref="mapa_gdrive")
+
+
 class Turma(Base):
     __tablename__ = "turmas"
 
