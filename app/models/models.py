@@ -98,6 +98,143 @@ class MapaGDrive(Base):
     professor = relationship("Professor", backref="mapa_gdrive")
 
 
+class PainelConfiguracao(Base):
+    __tablename__ = "painel_configuracoes"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    escola_id = Column(UUID(as_uuid=True), ForeignKey("escolas.id", ondelete="CASCADE"), nullable=False, unique=True)
+    nome = Column(String(255), nullable=False)
+    intervalo_sincronizacao_minutos = Column(Integer, nullable=False, default=15)
+    ativo = Column(Boolean, nullable=False, default=True)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    escola = relationship("Escola", backref="painel_configuracao")
+    fontes_grade = relationship("FonteGrade", back_populates="configuracao", cascade="all, delete-orphan")
+    plataformas = relationship("Plataforma", back_populates="configuracao", cascade="all, delete-orphan")
+    mensagens = relationship("MensagemPainel", back_populates="configuracao", cascade="all, delete-orphan")
+    importacoes = relationship("ImportacaoGrade", back_populates="configuracao", cascade="all, delete-orphan")
+    horarios = relationship("HorarioAula", back_populates="configuracao", cascade="all, delete-orphan")
+
+
+class FonteGrade(Base):
+    __tablename__ = "fontes_grade"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    configuracao_id = Column(UUID(as_uuid=True), ForeignKey("painel_configuracoes.id", ondelete="CASCADE"), nullable=False)
+    nome = Column(String(255), nullable=False)
+    turno = Column(String(20), nullable=True)
+    url_google_drive = Column(Text, nullable=False)
+    ativo = Column(Boolean, nullable=False, default=True)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    configuracao = relationship("PainelConfiguracao", back_populates="fontes_grade")
+    importacoes = relationship("ImportacaoGrade", back_populates="fonte")
+
+
+class Sala(Base):
+    __tablename__ = "salas"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    escola_id = Column(UUID(as_uuid=True), ForeignKey("escolas.id", ondelete="CASCADE"), nullable=False)
+    nome = Column(String(100), nullable=False)
+    codigo = Column(String(50), nullable=True)
+    ativo = Column(Boolean, nullable=False, default=True)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    escola = relationship("Escola", backref="salas")
+    horarios = relationship("HorarioAula", back_populates="sala")
+
+    __table_args__ = (UniqueConstraint("escola_id", "nome", name="uq_sala_escola_nome"),)
+
+
+class Plataforma(Base):
+    __tablename__ = "plataformas"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    configuracao_id = Column(UUID(as_uuid=True), ForeignKey("painel_configuracoes.id", ondelete="CASCADE"), nullable=False)
+    ordem = Column(Integer, nullable=False)
+    nome = Column(String(100), nullable=False)
+    tipo = Column(String(30), nullable=False, default="link")
+    url = Column(Text, nullable=True)
+    conteudo = Column(Text, nullable=True)
+    ativo = Column(Boolean, nullable=False, default=True)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    configuracao = relationship("PainelConfiguracao", back_populates="plataformas")
+
+    __table_args__ = (UniqueConstraint("configuracao_id", "ordem", name="uq_plataforma_config_ordem"),)
+
+
+class MensagemPainel(Base):
+    __tablename__ = "mensagens_painel"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    configuracao_id = Column(UUID(as_uuid=True), ForeignKey("painel_configuracoes.id", ondelete="CASCADE"), nullable=False)
+    titulo = Column(String(255), nullable=False)
+    conteudo = Column(Text, nullable=False)
+    prioridade = Column(Integer, nullable=False, default=0)
+    inicia_em = Column(DateTime(timezone=True), nullable=True)
+    termina_em = Column(DateTime(timezone=True), nullable=True)
+    ativo = Column(Boolean, nullable=False, default=True)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    configuracao = relationship("PainelConfiguracao", back_populates="mensagens")
+
+
+class ImportacaoGrade(Base):
+    __tablename__ = "importacoes_grade"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    configuracao_id = Column(UUID(as_uuid=True), ForeignKey("painel_configuracoes.id", ondelete="CASCADE"), nullable=False)
+    fonte_id = Column(UUID(as_uuid=True), ForeignKey("fontes_grade.id", ondelete="SET NULL"), nullable=True)
+    url_origem = Column(Text, nullable=False)
+    status = Column(String(20), nullable=False, default="pendente")
+    hash_arquivo = Column(String(128), nullable=True)
+    detalhes = Column(JSONB, nullable=True)
+    erro = Column(Text, nullable=True)
+    iniciado_em = Column(DateTime(timezone=True), nullable=True)
+    concluido_em = Column(DateTime(timezone=True), nullable=True)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+
+    configuracao = relationship("PainelConfiguracao", back_populates="importacoes")
+    fonte = relationship("FonteGrade", back_populates="importacoes")
+    horarios = relationship("HorarioAula", back_populates="importacao")
+
+
+class HorarioAula(Base):
+    __tablename__ = "horarios_aula"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    configuracao_id = Column(UUID(as_uuid=True), ForeignKey("painel_configuracoes.id", ondelete="CASCADE"), nullable=False)
+    importacao_id = Column(UUID(as_uuid=True), ForeignKey("importacoes_grade.id", ondelete="SET NULL"), nullable=True)
+    turma_id = Column(UUID(as_uuid=True), ForeignKey("turmas.id", ondelete="CASCADE"), nullable=False)
+    disciplina_id = Column(UUID(as_uuid=True), ForeignKey("disciplinas.id", ondelete="SET NULL"), nullable=True)
+    professor_id = Column(UUID(as_uuid=True), ForeignKey("professores.id", ondelete="SET NULL"), nullable=True)
+    sala_id = Column(UUID(as_uuid=True), ForeignKey("salas.id", ondelete="SET NULL"), nullable=True)
+    dia_semana = Column(Integer, nullable=False)
+    turno = Column(String(20), nullable=False)
+    hora_inicio = Column(String(5), nullable=False)
+    hora_fim = Column(String(5), nullable=False)
+    disciplina_codigo_original = Column(String(20), nullable=True)
+    ativo = Column(Boolean, nullable=False, default=True)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    configuracao = relationship("PainelConfiguracao", back_populates="horarios")
+    importacao = relationship("ImportacaoGrade", back_populates="horarios")
+    turma = relationship("Turma", backref="horarios_aula")
+    disciplina = relationship("Disciplina", backref="horarios_aula")
+    professor = relationship("Professor", backref="horarios_aula")
+    sala = relationship("Sala", back_populates="horarios")
+
+    __table_args__ = (UniqueConstraint("configuracao_id", "turma_id", "dia_semana", "hora_inicio", name="uq_horario_turma_dia_inicio"),)
+
+
 class Turma(Base):
     __tablename__ = "turmas"
 

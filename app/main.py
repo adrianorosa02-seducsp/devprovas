@@ -20,6 +20,7 @@ from app.routers import (
     turmas_router,
     usuarios_router,
     mapa_gdrive_router,
+    painel_router,
 )
 from app.admin import create_admin
 
@@ -37,9 +38,6 @@ origins = [
     "https://lab.inetz.com.br",
     "http://localhost",
     "http://localhost:3000",
-    "http://localhost:5500",   # ← Live Server (VS Code)
-    "http://127.0.0.1:5500",   # ← variação com IP
-    "http://localhost:8080",   # ← outras portas comuns
 ]
 
 app.add_middleware(
@@ -96,6 +94,7 @@ app.include_router(materiais_router)
 app.include_router(acervo_router)
 app.include_router(aprendizagem_router)
 app.include_router(mapa_gdrive_router)
+app.include_router(painel_router)
 
 
 @app.get("/")

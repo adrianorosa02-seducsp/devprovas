@@ -14,6 +14,13 @@ from app.models.models import (
     MaterialDidatico,
     AprendizagemEssencial,
     EscopoSequencia,
+    PainelConfiguracao,
+    FonteGrade,
+    Sala,
+    Plataforma,
+    MensagemPainel,
+    ImportacaoGrade,
+    HorarioAula,
     Base,
 )
 
@@ -33,4 +40,11 @@ __all__ = [
     "MaterialDidatico",
     "AprendizagemEssencial",
     "EscopoSequencia",
+    "PainelConfiguracao",
+    "FonteGrade",
+    "Sala",
+    "Plataforma",
+    "MensagemPainel",
+    "ImportacaoGrade",
+    "HorarioAula",
 ]

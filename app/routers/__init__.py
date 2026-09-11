@@ -13,3 +13,4 @@ from .respostas import router as respostas_router
 from .turmas import router as turmas_router
 from .usuarios import router as usuarios_router
 from .mapa_gdrive import router as mapa_gdrive_router
+from .painel import router as painel_router
