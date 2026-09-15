@@ -13,25 +13,20 @@ uvicorn = {extras = ["standard"], version = "^0.27.0"}
 sqlalchemy = "^2.0.0"
 psycopg2-binary = "^2.9.0"
 alembic = "^1.13.0"
-<<<<<<< HEAD
 pdfplumber = "^0.11.10"
 pandas = "^3.0.5"
 requests = "^2.34.2"
-=======
 openai = "^1.0.0"
 pgvector = "^0.4.2"
 email-validator = "^2.3.0"
 passlib = {extras = ["bcrypt"], version = "^1.7.4"}
 python-jose = {extras = ["cryptography"], version = "^3.3.0"}
-requests = "^2.34.2"
 pillow = "^12.3.0"
-pdfplumber = "^0.11.10"
 itsdangerous = "^2.2.0"
 sqladmin = "^0.20.0"
 python-multipart = "^0.0.32"
 starlette-session = "^0.4.3"
 asyncpg = "^0.31.0"
->>>>>>> b192d0c88f81059943bf548013646ea15f82b23a
 
 [tool.poetry.group.dev.dependencies]
 python-dotenv = "^1.0.0"
