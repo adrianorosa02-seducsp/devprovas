@@ -1,21 +1,15 @@
-<<<<<<< HEAD
-from fastapi import FastAPI, Depends, HTTPException
-from sqlalchemy import text
-from sqlalchemy.orm import Session
-from sqlalchemy.exc import OperationalError
-from app.core.database import engine, get_db
-from app.models.models import ConfiguracaoImportacaoHorarios, HorarioAula
-from app.services.extrator_horarios import obter_dfs_consolidados
-import uuid
-=======
 import logging
-from fastapi import FastAPI, Request, status
+import uuid
+from fastapi import FastAPI, Request, status, Depends, HTTPException
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
+from sqlalchemy.orm import Session
 from sqlalchemy.exc import OperationalError, SQLAlchemyError
-from app.core.database import async_engine
+from app.core.database import async_engine, get_db
+from app.models.models import ConfiguracaoImportacaoHorarios, HorarioAula
+from app.services.extrator_horarios import obter_dfs_consolidados
 from app.routers import (
     acervo_router,
     aprendizagem_router,
@@ -37,7 +31,6 @@ from app.admin import create_admin
 # Configuração básica de logging do Python
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("uvicorn.error")
->>>>>>> b192d0c88f81059943bf548013646ea15f82b23a
 
 app = FastAPI(title="DevProvas API", version="0.1.0")
 
@@ -120,7 +113,6 @@ def health():
             conn.execute(text("SELECT 1"))
         return {"status": "healthy", "database": "connected"}
     except OperationalError:
-<<<<<<< HEAD
         return {"status": "unhealthy", "database": "disconnected"}
 
 
@@ -189,6 +181,3 @@ def importar_horarios(escola_id: uuid.UUID, db: Session = Depends(get_db)):
     except Exception as e:
         db.rollback()
         raise HTTPException(status_code=500, detail=f"Erro ao processar a importação: {str(e)}")
-=======
-        return {"status": "unhealthy", "database": "disconnected"}
->>>>>>> b192d0c88f81059943bf548013646ea15f82b23a
