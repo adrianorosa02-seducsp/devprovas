@@ -2,6 +2,12 @@ FROM python:3.14-slim
 
 WORKDIR /app
 
+# instala dependências de sistema necessárias para o pandas e manipulação de imagem do pdfplumber
+RUN apt-get update && apt-get install -y \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+
 # instala poetry
 RUN pip install poetry
 

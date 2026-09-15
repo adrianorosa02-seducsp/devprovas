@@ -1,13 +1,7 @@
 import uuid
 from datetime import date, datetime
-<<<<<<< HEAD
 from sqlalchemy import Column, String, Text, Boolean, Integer, Date, DateTime, ForeignKey, DECIMAL, CHAR, UniqueConstraint, JSON
-from sqlalchemy.dialects.postgresql import UUID
-=======
-
-from sqlalchemy import Column, String, Text, Boolean, Integer, Date, DateTime, ForeignKey, DECIMAL, CHAR, UniqueConstraint
 from sqlalchemy.dialects.postgresql import UUID, JSONB
->>>>>>> b192d0c88f81059943bf548013646ea15f82b23a
 from sqlalchemy.orm import relationship
 from app.core.database import Base
 
@@ -360,7 +354,7 @@ class Resposta(Base):
     alternativa = relationship("Alternativa", back_populates="respostas")
 
 
-<<<<<<< HEAD
+
 class ConfiguracaoImportacaoHorarios(Base):
     __tablename__ = "configuracoes_importacao_horarios"
 
@@ -389,7 +383,7 @@ class HorarioAula(Base):
     created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
 
     escola = relationship("Escola")
-=======
+
 class MaterialDidatico(Base):
     __tablename__ = "materiais_didaticos"
     
@@ -696,4 +690,4 @@ class EscopoSequencia(Base):
     )
 
 
->>>>>>> b192d0c88f81059943bf548013646ea15f82b23a
+

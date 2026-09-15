@@ -11,13 +11,9 @@ from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sess
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-<<<<<<< HEAD
-DATABASE_URL = "postgresql://appuser:appsenha@git.inetz.com.br:5432/appdb?options=-csearch_path%3Ddevprovas"
-=======
 DATABASE_URL = os.getenv(
-    "DATABASE_URL", "postgresql://appuser:appsenha@db.inetz.com.br:5432/appdb"
+    "DATABASE_URL", "postgresql://appuser:appsenha@git.inetz.com.br:5432/appdb?options=-csearch_path%3Ddevprovas"
 )
->>>>>>> b192d0c88f81059943bf548013646ea15f82b23a
 
 # Sync engine (para Alembic, scripts, etc.)
 engine = create_engine(
