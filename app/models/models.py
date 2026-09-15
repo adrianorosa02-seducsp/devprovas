@@ -370,7 +370,7 @@ class ConfiguracaoImportacaoHorarios(Base):
     escola = relationship("Escola")
 
 
-class HorarioAula(Base):
+class HorarioAulaExtrator(Base):
     __tablename__ = "horarios_aulas"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)

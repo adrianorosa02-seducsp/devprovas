@@ -8,7 +8,7 @@ from sqlalchemy import text
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import OperationalError, SQLAlchemyError
 from app.core.database import async_engine, get_db
-from app.models.models import ConfiguracaoImportacaoHorarios, HorarioAula
+from app.models.models import ConfiguracaoImportacaoHorarios, HorarioAulaExtrator
 from app.services.extrator_horarios import obter_dfs_consolidados
 from app.routers import (
     acervo_router,
@@ -136,7 +136,7 @@ def importar_horarios(escola_id: uuid.UUID, db: Session = Depends(get_db)):
         dfs = obter_dfs_consolidados(config.fonte_dados)
         
         # Limpar os horários antigos desta escola
-        db.query(HorarioAula).filter(HorarioAula.escola_id == escola_id).delete()
+        db.query(HorarioAulaExtrator).filter(HorarioAulaExtrator.escola_id == escola_id).delete()
         
         # Inserir novos horários
         dias_banco = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex']
@@ -165,7 +165,7 @@ def importar_horarios(escola_id: uuid.UUID, db: Session = Depends(get_db)):
                             professor = str(teacher_row[dia]).strip()
                             
                             if disciplina and disciplina != 'None' and professor and professor != 'None':
-                                nova_aula = HorarioAula(
+                                nova_aula = HorarioAulaExtrator(
                                     escola_id=escola_id,
                                     dia_semana=dia,
                                     horario=horario_val,
