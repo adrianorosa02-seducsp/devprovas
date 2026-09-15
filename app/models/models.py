@@ -1,6 +1,6 @@
 import uuid
 from datetime import date, datetime
-from sqlalchemy import Column, String, Text, Boolean, Integer, Date, DateTime, ForeignKey, DECIMAL, CHAR, UniqueConstraint
+from sqlalchemy import Column, String, Text, Boolean, Integer, Date, DateTime, ForeignKey, DECIMAL, CHAR, UniqueConstraint, JSON
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 from app.core.database import Base
@@ -175,3 +175,33 @@ class Resposta(Base):
     questao = relationship("Questao", back_populates="respostas")
     aluno = relationship("Usuario", back_populates="respostas")
     alternativa = relationship("Alternativa", back_populates="respostas")
+
+
+class ConfiguracaoImportacaoHorarios(Base):
+    __tablename__ = "configuracoes_importacao_horarios"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    escola_id = Column(UUID(as_uuid=True), ForeignKey("escolas.id", ondelete="CASCADE"), unique=True)
+    tipo_importacao = Column(String(50), nullable=False)
+    fonte_dados = Column(Text)
+    mapeamento_dias = Column(JSON)
+    ativo = Column(Boolean, default=True)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    escola = relationship("Escola")
+
+
+class HorarioAula(Base):
+    __tablename__ = "horarios_aulas"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    escola_id = Column(UUID(as_uuid=True), ForeignKey("escolas.id", ondelete="CASCADE"))
+    dia_semana = Column(String(20), nullable=False)
+    horario = Column(String(20), nullable=False)
+    turma = Column(String(50), nullable=False)
+    disciplina = Column(String(100))
+    professor = Column(String(100))
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+
+    escola = relationship("Escola")
