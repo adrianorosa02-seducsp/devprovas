@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  apps_geduc:
+    image: ${DEPLOY_IMAGE}
+    //image: ghcr.io/adrianorosa02-seducsp/geduc:${{ github.sha }}
+    networks:
+      - dockermaster
+    enviroment:
+      - DATABASE_URL=postgresql://appuser:appsenha@database_postgres_app:5432/appdb
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.geduc.rule=Host(`geduc.inetz.com.br`)
+        - traefik.http.routers.geduc.entrypoints=websecure
+        - traefik.http.routers.geduc.tls=true
+        - traefik.http.routers.geduc.tls.certresolver=letsencryptresolver
+        - traefik.http.services.geduc.loadbalancer.server.port=8000
+
+networks:
+  dockermaster:
+    external: true

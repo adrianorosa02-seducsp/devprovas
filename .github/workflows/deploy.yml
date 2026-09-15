@@ -1,48 +1,157 @@
-name: Deploy
+name: Deploy GEDUC
 
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-geduc
+  cancel-in-progress: true
+
+env:
+  REGISTRY: ghcr.io/adrianorosa02-seducsp/geduc
+  SERVICE_NAME: apps_geduc
 
 jobs:
 
-  deploy:
-
+  build:
+    name: Build & publish image
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      image: ${{ steps.build-image.outputs.image }}
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - uses: actions/checkout@v4
+      - name: Listar arquivos no Runner
+        run: |
+          echo "Estrutura do repositório no runner:"
+          ls -R .
 
-      - name: Preparar diretório no servidor
-        uses: appleboy/ssh-action@master
+      - name: Setup Python 3.14
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.14
+
+      - name: Install project dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install poetry
+          poetry config virtualenvs.create false
+          poetry install --no-interaction --no-ansi
+
+      - name: Validate poetry metadata
+        run: poetry check
+
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push container
+        id: build-image
+        run: |
+          docker build \
+            -t "${REGISTRY}:latest" \
+            -t "${REGISTRY}:${GITHUB_SHA}" \
+            .
+          docker push "${REGISTRY}:${GITHUB_SHA}"
+          docker push "${REGISTRY}:latest"
+          echo "image=${REGISTRY}:${GITHUB_SHA}" >> "$GITHUB_OUTPUT"
+
+  #deploy:
+  #  name: Deploy to Swarm
+  #  needs: build
+  #  runs-on: ubuntu-latest
+  #  steps:
+  #    - name: Trigger remote deploy
+  #      uses: appleboy/ssh-action@v1.0.3
+  #      env:
+  #        DEPLOY_IMAGE: ${{ needs.build.outputs.image }}
+  #        SERVICE_NAME: ${{ env.SERVICE_NAME }}
+  #      with:
+  #        host: ${{ vars.SSH_HOST }}
+  #        username: ${{ vars.SSH_USER }}
+  #        key: ${{ secrets.SSH_KEY }}
+  #        script: |
+  #          docker login ghcr.io \
+  #            -u ${{ github.actor }} \
+  #            -p ${{ secrets.GHCR_TOKEN }}
+  #
+  #          docker pull "$DEPLOY_IMAGE"
+  #          docker stack deploy -c docker-compose.yml apps
+  #          ## No seu workflow de deploy, adicione este comando:
+  #          #docker service update \
+  #          #  --image "$DEPLOY_IMAGE" \
+  #          #  --force \
+  #          #  --with-registry-auth \
+  #          #  --update-order start-first \
+  #          #  --update-failure-action rollback \
+  #          #  "$SERVICE_NAME"
+  deploy:
+    name: Deploy to Swarm
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Precisamos baixar o repo neste job também para ter acesso ao arquivo .yaml
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Copia o arquivo da pasta infra para o servidor
+      - name: Copy stack file to server
+        uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ vars.SSH_HOST }}
           username: ${{ vars.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
-          port: ${{ vars.SSH_PORT }}
-          script: |
-            sudo mkdir -p /srv/apps
-            sudo chown -R $USER:$USER /srv/apps
-            sudo chmod -R 775 /srv/apps
+          source: "infra/labprovas.yaml" # Arquivo na raiz do repo
+          target: "/home/${{ vars.SSH_USER }}/deploy" # Destino no servidor
 
-      - name: Sincronizar Arquivos
-        uses: burnett01/rsync-deployments@7.0.2
-        with:
-          switches: -avzr --delete
-          path: ./
-          remote_path: /srv/apps/${{ vars.APP_NAME }}
-          remote_host: ${{ vars.SSH_HOST }}
-          remote_user: ${{ vars.SSH_USER }}
-          remote_key: ${{ secrets.SSH_KEY }}
-
-      - name: Reiniciar Serviço
-        uses: appleboy/ssh-action@master
+      # 3. Executa o deploy via SSH
+      - name: Trigger remote deploy
+        uses: appleboy/ssh-action@v1.0.3
+        env:
+          # Injetamos o SHA como variável de ambiente
+          IMAGE_TAG: "${{ github.sha }}"
+          REGISTRY: "ghcr.io/adrianorosa02-seducsp/geduc"
         with:
           host: ${{ vars.SSH_HOST }}
           username: ${{ vars.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
-          port: ${{ vars.SSH_PORT }}
           script: |
-            docker stack deploy -c /srv/apps/geduc/stack.yml apps
+            # Login
+            echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u adrianorosa02-seducsp --password-stdin
+  
+            # Força o pull
+            docker pull ghcr.io/adrianorosa02-seducsp/geduc:${{ github.sha }}
+  
+            # LISTA todos os serviços para podermos identificar o nome correto
+            echo "Lista de serviços atuais:"
+            docker service ls
+  
+            # Tenta atualizar o serviço que possivelmente é o seu (ajuste o nome se souber, caso contrário, o log acima te dirá)
+            # Se o seu deploy foi feito com 'docker stack deploy -c ... apps', 
+            # o serviço provavelmente se chama 'apps_geduc' ou 'apps_apps_geduc'
+  
+            SERVICE_NAME=$(docker service ls --format "{{.Name}}" | grep -i "geduc" | head -n 1)
+  
+            if [ -z "$SERVICE_NAME" ]; then
+              echo "Nenhum serviço contendo 'geduc' foi encontrado na lista acima."
+              exit 1
+            fi
+  
+            echo "Atualizando serviço: $SERVICE_NAME"
+  
+            docker service update \
+              --image ghcr.io/adrianorosa02-seducsp/geduc:${{ github.sha }} \
+              --with-registry-auth \
+              "$SERVICE_NAME"
+          envs: DEPLOY_IMAGE,SERVICE_NAME

@@ -1,0 +1,356 @@
+amp.azure.net/libs/amp/latest/skins/amp-default/azuremediaplayer.min.css:1  Failed to load resource: net::ERR_CERT_COMMON_NAME_INVALID
+azuremediaplayer.min.js:1  Failed to load resource: net::ERR_CERT_COMMON_NAME_INVALID
+www.clarity.ms/tag/q1nuwwhtwh:1  Failed to load resource: net::ERR_BLOCKED_BY_CLIENT
+index-m5bzej8o.js:156 MateriaisDigitais - pesquisa
+index-m5bzej8o.js:156 ✅ Dados dos materiais: Array(34)0: ano: 2026arquivos: [{…}]arrayLinksYoutube: "URL:, Tipo:, Nome Tipo:"aulasComTarefa: falsecodCronogramaAula: 146667exibirMunicipio: trueidCronogramaAula: 160197linkUrlYoutube: nullordenacao: 1referencia: "3º Bimestre"referenciaId: 3semana: 1tipo: "Livro do Estudante"titulo: "Livro do Estudante - Matemática"[[Prototype]]: Object1: {codCronogramaAula: 137800, idCronogramaAula: 151265, titulo: 'FIGURAS GEOMÉTRICAS PLANAS I (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}2: {codCronogramaAula: 137817, idCronogramaAula: 151281, titulo: 'FIGURAS GEOMÉTRICAS PLANAS II (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}3: {codCronogramaAula: 137818, idCronogramaAula: 151286, titulo: 'CALENDÁRIO (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}4: {codCronogramaAula: 137819, idCronogramaAula: 151287, titulo: 'ESTIMANDO MEDIDAS (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}5: {codCronogramaAula: 137820, idCronogramaAula: 151288, titulo: 'NÚMEROS NATURAIS I (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}6: {codCronogramaAula: 137821, idCronogramaAula: 151289, titulo: 'NÚMEROS NATURAIS II (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}7: {codCronogramaAula: 137822, idCronogramaAula: 151290, titulo: 'COMPONDO E DECOMPONDO NÚMEROS (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}8: {codCronogramaAula: 137823, idCronogramaAula: 151291, titulo: 'ADIÇÃO (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}9: {codCronogramaAula: 137824, idCronogramaAula: 151292, titulo: 'SITUAÇÕES-PROBLEMA - ADIÇÃO E SUBTRAÇÃO I (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}10: {codCronogramaAula: 137825, idCronogramaAula: 151293, titulo: 'SITUAÇÕES-PROBLEMA - ADIÇÃO E SUBTRAÇÃO II (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}11: {codCronogramaAula: 137826, idCronogramaAula: 151294, titulo: 'SITUAÇÕES-PROBLEMA  - ADIÇÃO E SUBTRAÇÃO III (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}12: {codCronogramaAula: 137827, idCronogramaAula: 151295, titulo: 'TABELAS E GRÁFICOS (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}13: {codCronogramaAula: 137828, idCronogramaAula: 151299, titulo: 'FIGURAS GEOMÉTRICAS PLANAS I (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}14: {codCronogramaAula: 137829, idCronogramaAula: 151300, titulo: 'FIGURAS GEOMÉTRICAS PLANAS II (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}15: {codCronogramaAula: 137837, idCronogramaAula: 151301, titulo: 'COMPARANDO MEDIDAS (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}16: {codCronogramaAula: 137838, idCronogramaAula: 151302, titulo: 'SISTEMA MONETÁRIO BRASILEIRO I (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}17: {codCronogramaAula: 137839, idCronogramaAula: 151303, titulo: 'SISTEMA MONETÁRIO BRASILEIRO II (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}18: {codCronogramaAula: 137840, idCronogramaAula: 151304, titulo: 'NÚMEROS NATURAIS (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}19: {codCronogramaAula: 137844, idCronogramaAula: 151309, titulo: 'SITUAÇÕES-PROBLEMA: ADIÇÃO (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}20: {codCronogramaAula: 137847, idCronogramaAula: 151312, titulo: 'SITUAÇÕES-PROBLEMA: SUBTRAÇÃO (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}21: {codCronogramaAula: 137849, idCronogramaAula: 151314, titulo: 'SITUAÇÕES-PROBLEMA: ADIÇÃO E SUBTRAÇÃO I (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}22: {codCronogramaAula: 137851, idCronogramaAula: 151316, titulo: 'SITUAÇÕES-PROBLEMA: ADIÇÃO E SUBTRAÇÃO II (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}23: {codCronogramaAula: 137853, idCronogramaAula: 151318, titulo: 'SEQUÊNCIA NUMÉRICA (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}24: {codCronogramaAula: 137856, idCronogramaAula: 151321, titulo: 'PROBABILIDADE E LEITURA DE TABELAS E GRÁFICOS (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}25: {codCronogramaAula: 137858, idCronogramaAula: 151323, titulo: 'COMPARANDO NÚMEROS NATURAIS (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}26: {codCronogramaAula: 137859, idCronogramaAula: 151324, titulo: 'COMPONDO E DECOMPONDO  NÚMEROS NATURAIS (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}27: {codCronogramaAula: 137861, idCronogramaAula: 151326, titulo: 'CALENDÁRIO (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}28: {codCronogramaAula: 137865, idCronogramaAula: 151331, titulo: 'TABELAS E GRÁFICOS (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}29: {codCronogramaAula: 137886, idCronogramaAula: 151353, titulo: 'ADIÇÃO E SUBTRAÇÃO (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}30: {codCronogramaAula: 137887, idCronogramaAula: 151354, titulo: 'COMPARANDO NÚMEROS (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}31: {codCronogramaAula: 137888, idCronogramaAula: 151355, titulo: 'MULTIPLICAÇÃO E ADIÇÃO  DE PARCELAS IGUAIS (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}32: {codCronogramaAula: 137889, idCronogramaAula: 151356, titulo: 'VAMOS REPARTIR? (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}33: {codCronogramaAula: 147505, idCronogramaAula: 160873, titulo: 'Atividade permanente Matific', referenciaId: 3, referencia: '3º Bimestre', …}length: 34[[Prototype]]: Array(0)
+index-m5bzej8o.js:156 📊 Quantidade de materiais: 34
+index-m5bzej8o.js:156 🎯 Primeiro material (exemplo): Object
+index-m5bzej8o.js:156 📋 DETALHES DE CADA MATERIAL:
+index-m5bzej8o.js:156 Material 1
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Livro do Estudante
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 2
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Objectano: 2026arquivos: (2) [{…}, {…}]arrayLinksYoutube: "URL:, Tipo:, Nome Tipo:"aulasComTarefa: falsecodCronogramaAula: 137800exibirMunicipio: trueidCronogramaAula: 151265linkUrlYoutube: nullordenacao: 1referencia: "3º Bimestre"referenciaId: 3semana: 1tipo: "Aula"titulo: "FIGURAS GEOMÉTRICAS PLANAS I (versão2)"[[Prototype]]: Object
+index-m5bzej8o.js:156 Material 3
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 4
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 5
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 6
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 7
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 8
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 9
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 10
+index-m5bzej8o.js:156 Dados completos: Object
+ Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 11
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 12
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 13
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 14
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 15
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 16
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 17
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 18
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 19
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 20
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 21
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 22
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 23
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 24
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 25
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 26
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 27
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 28
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 29
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 30
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 31
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 32
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 33
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:156 Material 34
+index-m5bzej8o.js:156 Dados completos: Object
+index-m5bzej8o.js:156 Tipo de arquivo: Aula
+index-m5bzej8o.js:156 Object
+index-m5bzej8o.js:152 [MaterialCard][160197][aba:materiais] Livro do Estudante - Matemática
+index-m5bzej8o.js:152 [MaterialCard][151265][aba:materiais] Aula 1 - FIGURAS GEOMÉTRICAS PLANAS I (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151281][aba:materiais] Aula 2 - FIGURAS GEOMÉTRICAS PLANAS II (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151286][aba:materiais] Aula 3 - CALENDÁRIO (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151287][aba:materiais] Aula 4 - ESTIMANDO MEDIDAS (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151288][aba:materiais] Aula 5 - NÚMEROS NATURAIS I (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151289][aba:materiais] Aula 6 - NÚMEROS NATURAIS II (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151290][aba:materiais] Aula 7 - COMPONDO E DECOMPONDO NÚMEROS (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151291][aba:materiais] Aula 8 - ADIÇÃO (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151292][aba:materiais] Aula 9 - SITUAÇÕES-PROBLEMA - ADIÇÃO E SUBTRAÇÃO I (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151293][aba:materiais] Aula 10 - SITUAÇÕES-PROBLEMA - ADIÇÃO E SUBTRAÇÃO II (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151294][aba:materiais] Aula 11 - SITUAÇÕES-PROBLEMA  - ADIÇÃO E SUBTRAÇÃO III (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151295][aba:materiais] Aula 12 - TABELAS E GRÁFICOS (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151299][aba:materiais] Aula 13 - FIGURAS GEOMÉTRICAS PLANAS I (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151300][aba:materiais] Aula 14 - FIGURAS GEOMÉTRICAS PLANAS II (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151301][aba:materiais] Aula 15 - COMPARANDO MEDIDAS (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151302][aba:materiais] Aula 16 - SISTEMA MONETÁRIO BRASILEIRO I (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151303][aba:materiais] Aula 17 - SISTEMA MONETÁRIO BRASILEIRO II (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151304][aba:materiais] Aula 18 - NÚMEROS NATURAIS (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151309][aba:materiais] Aula 19 - SITUAÇÕES-PROBLEMA: ADIÇÃO (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151312][aba:materiais] Aula 20 - SITUAÇÕES-PROBLEMA: SUBTRAÇÃO (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151314][aba:materiais] Aula 21 - SITUAÇÕES-PROBLEMA: ADIÇÃO E SUBTRAÇÃO I (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151316][aba:materiais] Aula 22 - SITUAÇÕES-PROBLEMA: ADIÇÃO E SUBTRAÇÃO II (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151318][aba:materiais] Aula 23 - SEQUÊNCIA NUMÉRICA (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151321][aba:materiais] Aula 24 - PROBABILIDADE E LEITURA DE TABELAS E GRÁFICOS (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151323][aba:materiais] Aula 25 - COMPARANDO NÚMEROS NATURAIS (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151324][aba:materiais] Aula 26 - COMPONDO E DECOMPONDO  NÚMEROS NATURAIS (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151326][aba:materiais] Aula 27 - CALENDÁRIO (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151331][aba:materiais] Aula 28 - TABELAS E GRÁFICOS (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151353][aba:materiais] Aula 29 - ADIÇÃO E SUBTRAÇÃO (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151354][aba:materiais] Aula 30 - COMPARANDO NÚMEROS (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151355][aba:materiais] Aula 31 - MULTIPLICAÇÃO E ADIÇÃO  DE PARCELAS IGUAIS (versão2)
+index-m5bzej8o.js:152 [MaterialCard][151356][aba:materiais] Aula 32 - VAMOS REPARTIR? (versão2)
+index-m5bzej8o.js:152 [MaterialCard][160873][aba:materiais] Aula 33 - Atividade permanente Matific
+ MateriaisDigitais - pesquisa
+ payload {key: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJMT0dJTiI6I…A1Mn0.1CpzJqFYPEqjIjDJ936oSTu6jlK52NLjQ1wOyrfw1H0', Ano: '2026', TipoEnsino: '1', Serie: '1', Bimestre: '3', …}
+ endpoint URL {origin: 'https://sedintegracoes.educacao.sp.gov.br', protocol: 'https:', username: '', password: '', host: 'sedintegracoes.educacao.sp.gov.br', …}
+ options {method: 'GET', headers: {…}}
+ ✅ Dados dos materiais: (34) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+ 📊 Quantidade de materiais: 34
+ 🎯 Primeiro material (exemplo): {codCronogramaAula: 146667, idCronogramaAula: 160197, titulo: 'Livro do Estudante - Matemática', referenciaId: 3, referencia: '3º Bimestre', …}
+ 📋 DETALHES DE CADA MATERIAL:
+ Material 1
+ Dados completos: {codCronogramaAula: 146667, idCronogramaAula: 160197, titulo: 'Livro do Estudante - Matemática', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Livro do Estudante
+ (index)Value0(index)Value0codCronogramaAula146667idCronogramaAula160197titulo'Livro do Estudante - Matemática'referenciaId3referencia'3º Bimestre'tipo'Livro do Estudante'ordenacao1semana1ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 2
+ Dados completos: {codCronogramaAula: 137800, idCronogramaAula: 151265, titulo: 'FIGURAS GEOMÉTRICAS PLANAS I (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137800idCronogramaAula151265titulo'FIGURAS GEOMÉTRICAS PLANAS I (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao1semana1ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 3
+ Dados completos: {codCronogramaAula: 137817, idCronogramaAula: 151281, titulo: 'FIGURAS GEOMÉTRICAS PLANAS II (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137817idCronogramaAula151281titulo'FIGURAS GEOMÉTRICAS PLANAS II (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao2semana1ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 4
+ Dados completos: {codCronogramaAula: 137818, idCronogramaAula: 151286, titulo: 'CALENDÁRIO (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137818idCronogramaAula151286titulo'CALENDÁRIO (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao3semana1ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 5
+ Dados completos: {codCronogramaAula: 137819, idCronogramaAula: 151287, titulo: 'ESTIMANDO MEDIDAS (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137819idCronogramaAula151287titulo'ESTIMANDO MEDIDAS (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao4semana1ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 6
+ Dados completos: {codCronogramaAula: 137820, idCronogramaAula: 151288, titulo: 'NÚMEROS NATURAIS I (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137820idCronogramaAula151288titulo'NÚMEROS NATURAIS I (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao5semana2ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 7
+ Dados completos: {codCronogramaAula: 137821, idCronogramaAula: 151289, titulo: 'NÚMEROS NATURAIS II (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137821idCronogramaAula151289titulo'NÚMEROS NATURAIS II (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao6semana2ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 8
+ Dados completos: {codCronogramaAula: 137822, idCronogramaAula: 151290, titulo: 'COMPONDO E DECOMPONDO NÚMEROS (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137822idCronogramaAula151290titulo'COMPONDO E DECOMPONDO NÚMEROS (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao7semana2ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 9
+ Dados completos: {codCronogramaAula: 137823, idCronogramaAula: 151291, titulo: 'ADIÇÃO (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137823idCronogramaAula151291titulo'ADIÇÃO (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao8semana2ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 10
+ Dados completos: {codCronogramaAula: 137824, idCronogramaAula: 151292, titulo: 'SITUAÇÕES-PROBLEMA - ADIÇÃO E SUBTRAÇÃO I (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137824idCronogramaAula151292titulo'SITUAÇÕES-PROBLEMA - ADIÇÃO E SUBTRAÇÃO I (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao9semana3ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 11
+ Dados completos: {codCronogramaAula: 137825, idCronogramaAula: 151293, titulo: 'SITUAÇÕES-PROBLEMA - ADIÇÃO E SUBTRAÇÃO II (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137825idCronogramaAula151293titulo'SITUAÇÕES-PROBLEMA - ADIÇÃO E SUBTRAÇÃO II (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao10semana3ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 12
+ Dados completos: {codCronogramaAula: 137826, idCronogramaAula: 151294, titulo: 'SITUAÇÕES-PROBLEMA  - ADIÇÃO E SUBTRAÇÃO III (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137826idCronogramaAula151294titulo'SITUAÇÕES-PROBLEMA  - ADIÇÃO E SUBTRAÇÃO III (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao11semana3ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 13
+ Dados completos: {codCronogramaAula: 137827, idCronogramaAula: 151295, titulo: 'TABELAS E GRÁFICOS (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137827idCronogramaAula151295titulo'TABELAS E GRÁFICOS (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao12semana3ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 14
+ Dados completos: {codCronogramaAula: 137828, idCronogramaAula: 151299, titulo: 'FIGURAS GEOMÉTRICAS PLANAS I (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137828idCronogramaAula151299titulo'FIGURAS GEOMÉTRICAS PLANAS I (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao13semana4ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 15
+ Dados completos: {codCronogramaAula: 137829, idCronogramaAula: 151300, titulo: 'FIGURAS GEOMÉTRICAS PLANAS II (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137829idCronogramaAula151300titulo'FIGURAS GEOMÉTRICAS PLANAS II (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao14semana4ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 16
+ Dados completos: {codCronogramaAula: 137837, idCronogramaAula: 151301, titulo: 'COMPARANDO MEDIDAS (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137837idCronogramaAula151301titulo'COMPARANDO MEDIDAS (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao15semana4ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 17
+ Dados completos: {codCronogramaAula: 137838, idCronogramaAula: 151302, titulo: 'SISTEMA MONETÁRIO BRASILEIRO I (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137838idCronogramaAula151302titulo'SISTEMA MONETÁRIO BRASILEIRO I (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao16semana4ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 18
+ Dados completos: {codCronogramaAula: 137839, idCronogramaAula: 151303, titulo: 'SISTEMA MONETÁRIO BRASILEIRO II (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137839idCronogramaAula151303titulo'SISTEMA MONETÁRIO BRASILEIRO II (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao17semana5ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 19
+ Dados completos: {codCronogramaAula: 137840, idCronogramaAula: 151304, titulo: 'NÚMEROS NATURAIS (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137840idCronogramaAula151304titulo'NÚMEROS NATURAIS (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao18semana5ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 20
+ Dados completos: {codCronogramaAula: 137844, idCronogramaAula: 151309, titulo: 'SITUAÇÕES-PROBLEMA: ADIÇÃO (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137844idCronogramaAula151309titulo'SITUAÇÕES-PROBLEMA: ADIÇÃO (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao19semana5ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 21
+ Dados completos: {codCronogramaAula: 137847, idCronogramaAula: 151312, titulo: 'SITUAÇÕES-PROBLEMA: SUBTRAÇÃO (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137847idCronogramaAula151312titulo'SITUAÇÕES-PROBLEMA: SUBTRAÇÃO (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao20semana5ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 22
+ Dados completos: {codCronogramaAula: 137849, idCronogramaAula: 151314, titulo: 'SITUAÇÕES-PROBLEMA: ADIÇÃO E SUBTRAÇÃO I (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137849idCronogramaAula151314titulo'SITUAÇÕES-PROBLEMA: ADIÇÃO E SUBTRAÇÃO I (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao21semana6ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 23
+ Dados completos: {codCronogramaAula: 137851, idCronogramaAula: 151316, titulo: 'SITUAÇÕES-PROBLEMA: ADIÇÃO E SUBTRAÇÃO II (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137851idCronogramaAula151316titulo'SITUAÇÕES-PROBLEMA: ADIÇÃO E SUBTRAÇÃO II (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao22semana6ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 24
+ Dados completos: {codCronogramaAula: 137853, idCronogramaAula: 151318, titulo: 'SEQUÊNCIA NUMÉRICA (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137853idCronogramaAula151318titulo'SEQUÊNCIA NUMÉRICA (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao23semana6ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 25
+ Dados completos: {codCronogramaAula: 137856, idCronogramaAula: 151321, titulo: 'PROBABILIDADE E LEITURA DE TABELAS E GRÁFICOS (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137856idCronogramaAula151321titulo'PROBABILIDADE E LEITURA DE TABELAS E GRÁFICOS (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao24semana6ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 26
+ Dados completos: {codCronogramaAula: 137858, idCronogramaAula: 151323, titulo: 'COMPARANDO NÚMEROS NATURAIS (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137858idCronogramaAula151323titulo'COMPARANDO NÚMEROS NATURAIS (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao25semana7ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 27
+ Dados completos: {codCronogramaAula: 137859, idCronogramaAula: 151324, titulo: 'COMPONDO E DECOMPONDO  NÚMEROS NATURAIS (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137859idCronogramaAula151324titulo'COMPONDO E DECOMPONDO  NÚMEROS NATURAIS (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao26semana7ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 28
+ Dados completos: {codCronogramaAula: 137861, idCronogramaAula: 151326, titulo: 'CALENDÁRIO (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137861idCronogramaAula151326titulo'CALENDÁRIO (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao27semana7ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 29
+ Dados completos: {codCronogramaAula: 137865, idCronogramaAula: 151331, titulo: 'TABELAS E GRÁFICOS (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137865idCronogramaAula151331titulo'TABELAS E GRÁFICOS (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao28semana7ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 30
+ Dados completos: {codCronogramaAula: 137886, idCronogramaAula: 151353, titulo: 'ADIÇÃO E SUBTRAÇÃO (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137886idCronogramaAula151353titulo'ADIÇÃO E SUBTRAÇÃO (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao29semana8ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 31
+ Dados completos: {codCronogramaAula: 137887, idCronogramaAula: 151354, titulo: 'COMPARANDO NÚMEROS (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137887idCronogramaAula151354titulo'COMPARANDO NÚMEROS (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao30semana8ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 32
+ Dados completos: {codCronogramaAula: 137888, idCronogramaAula: 151355, titulo: 'MULTIPLICAÇÃO E ADIÇÃO  DE PARCELAS IGUAIS (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137888idCronogramaAula151355titulo'MULTIPLICAÇÃO E ADIÇÃO  DE PARCELAS IGUAIS (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao31semana8ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 33
+ Dados completos: {codCronogramaAula: 137889, idCronogramaAula: 151356, titulo: 'VAMOS REPARTIR? (versão2)', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula137889idCronogramaAula151356titulo'VAMOS REPARTIR? (versão2)'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao32semana8ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ Material 34
+ Dados completos: {codCronogramaAula: 147505, idCronogramaAula: 160873, titulo: 'Atividade permanente Matific', referenciaId: 3, referencia: '3º Bimestre', …}
+ Tipo de arquivo: Aula
+ (index)Value01(index)Value01codCronogramaAula147505idCronogramaAula160873titulo'Atividade permanente Matific'referenciaId3referencia'3º Bimestre'tipo'Aula'ordenacao33semana8ano2026aulasComTarefafalselinkUrlYoutubenullexibirMunicipiotruearquivos{…}{…}arrayLinksYoutube'URL:, Tipo:, Nome Tipo:'Object
+ [MaterialCard][160197][aba:materiais] Livro do Estudante - Matemática
+ [MaterialCard][151265][aba:materiais] Aula 1 - FIGURAS GEOMÉTRICAS PLANAS I (versão2)
+ [MaterialCard][151281][aba:materiais] Aula 2 - FIGURAS GEOMÉTRICAS PLANAS II (versão2)
+ [MaterialCard][151286][aba:materiais] Aula 3 - CALENDÁRIO (versão2)
+ [MaterialCard][151287][aba:materiais] Aula 4 - ESTIMANDO MEDIDAS (versão2)
+ [MaterialCard][151288][aba:materiais] Aula 5 - NÚMEROS NATURAIS I (versão2)
+ [MaterialCard][151289][aba:materiais] Aula 6 - NÚMEROS NATURAIS II (versão2)
+ [MaterialCard][151290][aba:materiais] Aula 7 - COMPONDO E DECOMPONDO NÚMEROS (versão2)
+ [MaterialCard][151291][aba:materiais] Aula 8 - ADIÇÃO (versão2)
+ [MaterialCard][151292][aba:materiais] Aula 9 - SITUAÇÕES-PROBLEMA - ADIÇÃO E SUBTRAÇÃO I (versão2)
+ [MaterialCard][151293][aba:materiais] Aula 10 - SITUAÇÕES-PROBLEMA - ADIÇÃO E SUBTRAÇÃO II (versão2)
+ [MaterialCard][151294][aba:materiais] Aula 11 - SITUAÇÕES-PROBLEMA  - ADIÇÃO E SUBTRAÇÃO III (versão2)
+ [MaterialCard][151295][aba:materiais] Aula 12 - TABELAS E GRÁFICOS (versão2)
+ [MaterialCard][151299][aba:materiais] Aula 13 - FIGURAS GEOMÉTRICAS PLANAS I (versão2)
+ [MaterialCard][151300][aba:materiais] Aula 14 - FIGURAS GEOMÉTRICAS PLANAS II (versão2)
+ [MaterialCard][151301][aba:materiais] Aula 15 - COMPARANDO MEDIDAS (versão2)
+ [MaterialCard][151302][aba:materiais] Aula 16 - SISTEMA MONETÁRIO BRASILEIRO I (versão2)
+ [MaterialCard][151303][aba:materiais] Aula 17 - SISTEMA MONETÁRIO BRASILEIRO II (versão2)
+ [MaterialCard][151304][aba:materiais] Aula 18 - NÚMEROS NATURAIS (versão2)
+ [MaterialCard][151309][aba:materiais] Aula 19 - SITUAÇÕES-PROBLEMA: ADIÇÃO (versão2)
+ [MaterialCard][151312][aba:materiais] Aula 20 - SITUAÇÕES-PROBLEMA: SUBTRAÇÃO (versão2)
+ [MaterialCard][151314][aba:materiais] Aula 21 - SITUAÇÕES-PROBLEMA: ADIÇÃO E SUBTRAÇÃO I (versão2)
+ [MaterialCard][151316][aba:materiais] Aula 22 - SITUAÇÕES-PROBLEMA: ADIÇÃO E SUBTRAÇÃO II (versão2)
+ [MaterialCard][151318][aba:materiais] Aula 23 - SEQUÊNCIA NUMÉRICA (versão2)
+ [MaterialCard][151321][aba:materiais] Aula 24 - PROBABILIDADE E LEITURA DE TABELAS E GRÁFICOS (versão2)
+ [MaterialCard][151323][aba:materiais] Aula 25 - COMPARANDO NÚMEROS NATURAIS (versão2)
+ [MaterialCard][151324][aba:materiais] Aula 26 - COMPONDO E DECOMPONDO  NÚMEROS NATURAIS (versão2)
+ [MaterialCard][151326][aba:materiais] Aula 27 - CALENDÁRIO (versão2)
+ [MaterialCard][151331][aba:materiais] Aula 28 - TABELAS E GRÁFICOS (versão2)
+ [MaterialCard][151353][aba:materiais] Aula 29 - ADIÇÃO E SUBTRAÇÃO (versão2)
+ [MaterialCard][151354][aba:materiais] Aula 30 - COMPARANDO NÚMEROS (versão2)
+ [MaterialCard][151355][aba:materiais] Aula 31 - MULTIPLICAÇÃO E ADIÇÃO  DE PARCELAS IGUAIS (versão2)
+ [MaterialCard][151356][aba:materiais] Aula 32 - VAMOS REPARTIR? (versão2)
+ [MaterialCard][160873][aba:materiais] Aula 33 - Atividade permanente Matific

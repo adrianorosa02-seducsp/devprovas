@@ -1,7 +1,13 @@
 import uuid
 from datetime import date, datetime
+<<<<<<< HEAD
 from sqlalchemy import Column, String, Text, Boolean, Integer, Date, DateTime, ForeignKey, DECIMAL, CHAR, UniqueConstraint, JSON
 from sqlalchemy.dialects.postgresql import UUID
+=======
+
+from sqlalchemy import Column, String, Text, Boolean, Integer, Date, DateTime, ForeignKey, DECIMAL, CHAR, UniqueConstraint
+from sqlalchemy.dialects.postgresql import UUID, JSONB
+>>>>>>> b192d0c88f81059943bf548013646ea15f82b23a
 from sqlalchemy.orm import relationship
 from app.core.database import Base
 
@@ -20,6 +26,7 @@ class Escola(Base):
     usuarios = relationship("Usuario", back_populates="escola")
     turmas = relationship("Turma", back_populates="escola")
     disciplinas = relationship("Disciplina", back_populates="escola")
+    professores = relationship("Professor", back_populates="escola")
 
 
 class Usuario(Base):
@@ -36,29 +43,17 @@ class Usuario(Base):
     updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
 
     escola = relationship("Escola", back_populates="usuarios")
-    turmas = relationship("Turma", back_populates="professor", foreign_keys="Turma.professor_id")
-    provas = relationship("Prova", back_populates="professor")
+    professor_profile = relationship("Professor", back_populates="usuario", uselist=False)
     respostas = relationship("Resposta", back_populates="aluno")
     matriculas = relationship("Matricula", back_populates="aluno")
 
+    @property
+    def senha(self):
+        raise AttributeError("senha não é legível")
 
-class Turma(Base):
-    __tablename__ = "turmas"
-
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    nome = Column(String(100), nullable=False)
-    serie = Column(String(50))
-    turno = Column(String(20))
-    escola_id = Column(UUID(as_uuid=True), ForeignKey("escolas.id", ondelete="CASCADE"))
-    professor_id = Column(UUID(as_uuid=True), ForeignKey("usuarios.id", ondelete="SET NULL"))
-    ativo = Column(Boolean, default=True)
-    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
-    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
-
-    escola = relationship("Escola", back_populates="turmas")
-    professor = relationship("Usuario", back_populates="turmas", foreign_keys=[professor_id])
-    matriculas = relationship("Matricula", back_populates="turma")
-    provas_turmas = relationship("ProvaTurma", back_populates="turma")
+    @senha.setter
+    def senha(self, value):
+        self._plain_password = value
 
 
 class Disciplina(Base):
@@ -74,6 +69,194 @@ class Disciplina(Base):
 
     escola = relationship("Escola", back_populates="disciplinas")
     provas = relationship("Prova", back_populates="disciplina")
+
+
+class Professor(Base):
+    __tablename__ = "professores"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    usuario_id = Column(UUID(as_uuid=True), ForeignKey("usuarios.id", ondelete="CASCADE"), nullable=False, unique=True)
+    escola_id = Column(UUID(as_uuid=True), ForeignKey("escolas.id", ondelete="CASCADE"))
+    formacao = Column(Text)
+    especialidade = Column(Text)
+    ativo = Column(Boolean, default=True)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    usuario = relationship("Usuario", back_populates="professor_profile")
+    escola = relationship("Escola", back_populates="professores")
+    turmas = relationship("Turma", back_populates="professor")
+    provas = relationship("Prova", back_populates="professor")
+
+
+class MapaGDrive(Base):
+    __tablename__ = "mapa_gdrive"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    professor_id = Column(UUID(as_uuid=True), ForeignKey("professores.id", ondelete="CASCADE"), nullable=False)
+    alias_professor = Column(String(255), nullable=False, index=True)
+    estrutura = Column(JSONB, nullable=False)
+    ativo = Column(Boolean, default=True)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    professor = relationship("Professor", backref="mapa_gdrive")
+
+
+class PainelConfiguracao(Base):
+    __tablename__ = "painel_configuracoes"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    escola_id = Column(UUID(as_uuid=True), ForeignKey("escolas.id", ondelete="CASCADE"), nullable=False, unique=True)
+    nome = Column(String(255), nullable=False)
+    intervalo_sincronizacao_minutos = Column(Integer, nullable=False, default=15)
+    ativo = Column(Boolean, nullable=False, default=True)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    escola = relationship("Escola", backref="painel_configuracao")
+    fontes_grade = relationship("FonteGrade", back_populates="configuracao", cascade="all, delete-orphan")
+    plataformas = relationship("Plataforma", back_populates="configuracao", cascade="all, delete-orphan")
+    mensagens = relationship("MensagemPainel", back_populates="configuracao", cascade="all, delete-orphan")
+    importacoes = relationship("ImportacaoGrade", back_populates="configuracao", cascade="all, delete-orphan")
+    horarios = relationship("HorarioAula", back_populates="configuracao", cascade="all, delete-orphan")
+
+
+class FonteGrade(Base):
+    __tablename__ = "fontes_grade"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    configuracao_id = Column(UUID(as_uuid=True), ForeignKey("painel_configuracoes.id", ondelete="CASCADE"), nullable=False)
+    nome = Column(String(255), nullable=False)
+    turno = Column(String(20), nullable=True)
+    url_google_drive = Column(Text, nullable=False)
+    ativo = Column(Boolean, nullable=False, default=True)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    configuracao = relationship("PainelConfiguracao", back_populates="fontes_grade")
+    importacoes = relationship("ImportacaoGrade", back_populates="fonte")
+
+
+class Sala(Base):
+    __tablename__ = "salas"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    escola_id = Column(UUID(as_uuid=True), ForeignKey("escolas.id", ondelete="CASCADE"), nullable=False)
+    nome = Column(String(100), nullable=False)
+    codigo = Column(String(50), nullable=True)
+    ativo = Column(Boolean, nullable=False, default=True)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    escola = relationship("Escola", backref="salas")
+    horarios = relationship("HorarioAula", back_populates="sala")
+
+    __table_args__ = (UniqueConstraint("escola_id", "nome", name="uq_sala_escola_nome"),)
+
+
+class Plataforma(Base):
+    __tablename__ = "plataformas"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    configuracao_id = Column(UUID(as_uuid=True), ForeignKey("painel_configuracoes.id", ondelete="CASCADE"), nullable=False)
+    ordem = Column(Integer, nullable=False)
+    nome = Column(String(100), nullable=False)
+    tipo = Column(String(30), nullable=False, default="link")
+    url = Column(Text, nullable=True)
+    conteudo = Column(Text, nullable=True)
+    ativo = Column(Boolean, nullable=False, default=True)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    configuracao = relationship("PainelConfiguracao", back_populates="plataformas")
+
+    __table_args__ = (UniqueConstraint("configuracao_id", "ordem", name="uq_plataforma_config_ordem"),)
+
+
+class MensagemPainel(Base):
+    __tablename__ = "mensagens_painel"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    configuracao_id = Column(UUID(as_uuid=True), ForeignKey("painel_configuracoes.id", ondelete="CASCADE"), nullable=False)
+    titulo = Column(String(255), nullable=False)
+    conteudo = Column(Text, nullable=False)
+    prioridade = Column(Integer, nullable=False, default=0)
+    inicia_em = Column(DateTime(timezone=True), nullable=True)
+    termina_em = Column(DateTime(timezone=True), nullable=True)
+    ativo = Column(Boolean, nullable=False, default=True)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    configuracao = relationship("PainelConfiguracao", back_populates="mensagens")
+
+
+class ImportacaoGrade(Base):
+    __tablename__ = "importacoes_grade"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    configuracao_id = Column(UUID(as_uuid=True), ForeignKey("painel_configuracoes.id", ondelete="CASCADE"), nullable=False)
+    fonte_id = Column(UUID(as_uuid=True), ForeignKey("fontes_grade.id", ondelete="SET NULL"), nullable=True)
+    url_origem = Column(Text, nullable=False)
+    status = Column(String(20), nullable=False, default="pendente")
+    hash_arquivo = Column(String(128), nullable=True)
+    detalhes = Column(JSONB, nullable=True)
+    erro = Column(Text, nullable=True)
+    iniciado_em = Column(DateTime(timezone=True), nullable=True)
+    concluido_em = Column(DateTime(timezone=True), nullable=True)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+
+    configuracao = relationship("PainelConfiguracao", back_populates="importacoes")
+    fonte = relationship("FonteGrade", back_populates="importacoes")
+    horarios = relationship("HorarioAula", back_populates="importacao")
+
+
+class HorarioAula(Base):
+    __tablename__ = "horarios_aula"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    configuracao_id = Column(UUID(as_uuid=True), ForeignKey("painel_configuracoes.id", ondelete="CASCADE"), nullable=False)
+    importacao_id = Column(UUID(as_uuid=True), ForeignKey("importacoes_grade.id", ondelete="SET NULL"), nullable=True)
+    turma_id = Column(UUID(as_uuid=True), ForeignKey("turmas.id", ondelete="CASCADE"), nullable=False)
+    disciplina_id = Column(UUID(as_uuid=True), ForeignKey("disciplinas.id", ondelete="SET NULL"), nullable=True)
+    professor_id = Column(UUID(as_uuid=True), ForeignKey("professores.id", ondelete="SET NULL"), nullable=True)
+    sala_id = Column(UUID(as_uuid=True), ForeignKey("salas.id", ondelete="SET NULL"), nullable=True)
+    dia_semana = Column(Integer, nullable=False)
+    turno = Column(String(20), nullable=False)
+    hora_inicio = Column(String(5), nullable=False)
+    hora_fim = Column(String(5), nullable=False)
+    disciplina_codigo_original = Column(String(20), nullable=True)
+    ativo = Column(Boolean, nullable=False, default=True)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    configuracao = relationship("PainelConfiguracao", back_populates="horarios")
+    importacao = relationship("ImportacaoGrade", back_populates="horarios")
+    turma = relationship("Turma", backref="horarios_aula")
+    disciplina = relationship("Disciplina", backref="horarios_aula")
+    professor = relationship("Professor", backref="horarios_aula")
+    sala = relationship("Sala", back_populates="horarios")
+
+    __table_args__ = (UniqueConstraint("configuracao_id", "turma_id", "dia_semana", "hora_inicio", name="uq_horario_turma_dia_inicio"),)
+
+
+class Turma(Base):
+    __tablename__ = "turmas"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    nome = Column(String(100), nullable=False)
+    serie = Column(String(50))
+    turno = Column(String(20))
+    escola_id = Column(UUID(as_uuid=True), ForeignKey("escolas.id", ondelete="CASCADE"))
+    professor_id = Column(UUID(as_uuid=True), ForeignKey("professores.id", ondelete="SET NULL"))
+    ativo = Column(Boolean, default=True)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    escola = relationship("Escola", back_populates="turmas")
+    professor = relationship("Professor", back_populates="turmas")
+    matriculas = relationship("Matricula", back_populates="turma")
+    provas_turmas = relationship("ProvaTurma", back_populates="turma")
 
 
 class Matricula(Base):
@@ -99,7 +282,7 @@ class Prova(Base):
     titulo = Column(String(255), nullable=False)
     descricao = Column(Text)
     disciplina_id = Column(UUID(as_uuid=True), ForeignKey("disciplinas.id", ondelete="SET NULL"))
-    professor_id = Column(UUID(as_uuid=True), ForeignKey("usuarios.id", ondelete="SET NULL"))
+    professor_id = Column(UUID(as_uuid=True), ForeignKey("professores.id", ondelete="SET NULL"))
     data_aplicacao = Column(Date)
     duracao_minutos = Column(Integer)
     peso = Column(DECIMAL(5, 2), default=1.0)
@@ -108,7 +291,7 @@ class Prova(Base):
     updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
 
     disciplina = relationship("Disciplina", back_populates="provas")
-    professor = relationship("Usuario", back_populates="provas")
+    professor = relationship("Professor", back_populates="provas")
     questoes = relationship("Questao", back_populates="prova", order_by="Questao.ordem")
     provas_turmas = relationship("ProvaTurma", back_populates="prova")
 
@@ -177,6 +360,7 @@ class Resposta(Base):
     alternativa = relationship("Alternativa", back_populates="respostas")
 
 
+<<<<<<< HEAD
 class ConfiguracaoImportacaoHorarios(Base):
     __tablename__ = "configuracoes_importacao_horarios"
 
@@ -205,3 +389,311 @@ class HorarioAula(Base):
     created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
 
     escola = relationship("Escola")
+=======
+class MaterialDidatico(Base):
+    __tablename__ = "materiais_didaticos"
+    
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    
+    ano_referencia = Column(Integer, nullable=False)
+    bimestre = Column(Integer, nullable=False)
+    serie = Column(String(10), nullable=False)
+    componente = Column(String(50), nullable=False)
+    
+    cod_cronograma = Column(Integer, nullable=False)
+    id_cronograma = Column(Integer, nullable=False)
+    titulo = Column(String(255))
+    referencia_id = Column(Integer)
+    tipo = Column(String(100))
+    ordenacao = Column(Integer)
+    semana = Column(Integer)
+    aulas_com_tarefa = Column(Boolean)
+    link_url_youtube = Column(Text, nullable=True)
+    exibir_municipio = Column(Boolean)
+    
+    arquivos = Column(JSONB) 
+    
+    array_links_youtube = Column(Text)
+    
+    id_aula = Column(String(20), nullable=False, index=True)
+
+
+class AcervoDigital(Base):
+    __tablename__ = "acervo_digital"
+    
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    arquivo_id = Column(String(255), unique=True, nullable=False, index=True)
+    titulo = Column(String(255), nullable=False)
+    descricao = Column(Text)
+    tipo_arquivo = Column(String(100))
+    link_google_drive = Column(Text)
+    link_download_python = Column(Text)
+    created_at = Column(DateTime(timezone=True), default=datetime.utcnow)
+    updated_at = Column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
+
+
+import uuid
+from datetime import datetime
+
+from sqlalchemy import (
+    Column,
+    String,
+    Integer,
+    Text,
+    DateTime,
+    UniqueConstraint
+)
+
+from sqlalchemy.dialects.postgresql import UUID, JSONB
+from app.core.database import Base
+
+
+class AprendizagemEssencial(Base):
+    __tablename__ = "aprendizagens_essenciais"
+
+    # =====================================================
+    # Chave Técnica
+    # =====================================================
+
+    id = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        default=uuid.uuid4
+    )
+
+    # =====================================================
+    # Contexto Pedagógico
+    # =====================================================
+
+    ano_referencia = Column(
+        Integer,
+        nullable=False,
+        index=True
+    )
+
+    etapa = Column(
+        String(20),
+        nullable=False,
+        index=True
+    )  # EFAI | EFAF
+
+    componente = Column(
+        String(50),
+        nullable=False,
+        index=True
+    )  # Matemática | Língua Portuguesa ...
+
+    ano = Column(
+        Integer,
+        nullable=False,
+        index=True
+    )  # 1..9
+
+    # =====================================================
+    # Identificação da AE
+    # =====================================================
+
+    id_ae = Column(
+        String(20),
+        nullable=False,
+        unique=True,
+        index=True
+    )  # EF01MAAE1
+
+    prefixo = Column(
+        String(10),
+        nullable=False,
+        index=True
+    )  # EF01MA
+
+    codigo_ae = Column(
+        String(10),
+        nullable=False
+    )  # AE1
+
+    descricao = Column(
+        Text,
+        nullable=False
+    )
+
+    # =====================================================
+    # BNCC
+    # =====================================================
+
+    habilidade_priorizada = Column(
+        String(20),
+        nullable=False,
+        index=True
+    )  # EF01MA14
+
+    habilidades_relacionadas = Column(
+        JSONB,
+        nullable=True
+    )
+
+    conhecimentos_previos = Column(
+        JSONB,
+        nullable=True
+    )
+
+    # =====================================================
+    # Avaliações Externas
+    # =====================================================
+
+    prova_paulista = Column(
+        JSONB,
+        nullable=True
+    )
+
+    saresp = Column(
+        JSONB,
+        nullable=True
+    )
+
+    # =====================================================
+    # Para desenvolver a aprendizagem
+    # =====================================================
+
+    desenvolvimento_aprendizagem = Column(
+        JSONB,
+        nullable=True
+    )
+
+    # =====================================================
+    # Auditoria
+    # =====================================================
+
+    created_at = Column(
+        DateTime(timezone=True),
+        default=datetime.utcnow,
+        nullable=False
+    )
+
+    updated_at = Column(
+        DateTime(timezone=True),
+        default=datetime.utcnow,
+        onupdate=datetime.utcnow,
+        nullable=False
+    )
+
+    __table_args__ = (
+        UniqueConstraint(
+            "ano_referencia",
+            "id_ae",
+            name="uq_aprendizagem_essencial"
+        ),
+    )
+
+
+class EscopoSequencia(Base):
+    __tablename__ = "escopo_sequencia"
+
+    id = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        default=uuid.uuid4
+    )
+
+    ano_referencia = Column(
+        Integer,
+        nullable=False,
+        index=True
+    )
+
+    etapa = Column(
+        String(20),
+        nullable=False,
+        index=True
+    )
+
+    componente = Column(
+        String(50),
+        nullable=False,
+        index=True
+    )
+
+    ano = Column(
+        Integer,
+        nullable=False,
+        index=True
+    )
+
+    bimestre = Column(
+        Integer,
+        nullable=True,
+        index=True
+    )  # 1..4
+
+    id_ae = Column(
+        String(20),
+        nullable=False,
+        index=True
+    )
+
+    prefixo_ae = Column(
+        String(10),
+        nullable=False,
+        index=True
+    )
+
+    id_aula = Column(
+        String(30),
+        nullable=False,
+        index=True
+    )
+
+    aula = Column(
+        String(20),
+        nullable=True
+    )
+
+    conteudo = Column(
+        Text,
+        nullable=True
+    )
+
+    objetivos_aprendizagem = Column(
+        Text,
+        nullable=True
+    )
+
+    habilidades = Column(
+        JSONB,
+        nullable=True
+    )
+
+    aprendizagem_essencial = Column(
+        JSONB,
+        nullable=True
+    )
+
+    pagina_pdf = Column(
+        Integer,
+        nullable=False
+    )
+
+    created_at = Column(
+        DateTime(timezone=True),
+        default=datetime.utcnow,
+        nullable=False
+    )
+
+    updated_at = Column(
+        DateTime(timezone=True),
+        default=datetime.utcnow,
+        onupdate=datetime.utcnow,
+        nullable=False
+    )
+
+    __table_args__ = (
+        UniqueConstraint(
+            "ano_referencia",
+            "id_aula",
+            "aula",
+            "pagina_pdf",
+            name="uq_escopo_sequencia"
+        ),
+    )
+
+
+>>>>>>> b192d0c88f81059943bf548013646ea15f82b23a
