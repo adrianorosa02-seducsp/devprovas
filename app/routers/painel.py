@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import List
+from typing import List, Optional
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, status
@@ -7,7 +7,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session, joinedload
 
 from app.core.database import get_db
-from app.models.models import FonteGrade, HorarioAula, ImportacaoGrade, MensagemPainel, PainelConfiguracao, Plataforma, Sala
+from app.models.models import FonteGrade, HorarioAula, ImportacaoGrade, MensagemPainel, PainelConfiguracao, Plataforma, Sala, HorarioAulaExtrator
 from app.routers.common import apply_updates, get_model_or_404
 from app.schemas.painel import FonteGradeCreate, FonteGradeRead, HorarioAulaCreate, HorarioAulaRead, ImportacaoGradeCreate, ImportacaoGradeRead, MensagemPainelCreate, MensagemPainelRead, PainelConfiguracaoCreate, PainelConfiguracaoRead, PainelConfiguracaoUpdate, PainelDashboardRead, PlataformaCreate, PlataformaRead, SalaCreate, SalaRead
 from app.services.grade_importer import GradeImportError, baixar_e_analisar_pdf
@@ -139,3 +139,59 @@ def dashboard(configuracao_id: UUID, db: Session = Depends(get_db)):
         professor = horario.professor.usuario.nome if horario.professor and horario.professor.usuario else None
         grupos.setdefault(horario.turma_id, {"turma_id": horario.turma_id, "turma_nome": horario.turma.nome, "turno": horario.turno, "horarios": []})["horarios"].append({"id": horario.id, "turma_id": horario.turma_id, "turma_nome": horario.turma.nome, "sala_nome": horario.sala.nome if horario.sala else None, "disciplina_nome": horario.disciplina.nome if horario.disciplina else None, "disciplina_codigo": horario.disciplina.codigo if horario.disciplina else horario.disciplina_codigo_original, "professor_nome": professor, "turno": horario.turno, "hora_inicio": horario.hora_inicio, "hora_fim": horario.hora_fim, "status": estado})
     return {"data": agora.date().isoformat(), "dia_semana": agora.isoweekday(), "turno": None, "atualizado_em": agora, "turmas": list(grupos.values())}
+
+@router.get("/dashboard/legacy")
+def dashboard_legacy(escola_id: UUID, data: Optional[str] = None, db: Session = Depends(get_db)):
+    if not data:
+        data_obj = datetime.now()
+    else:
+        try:
+            if '/' in data:
+                data_obj = datetime.strptime(data, '%d/%m/%Y')
+            else:
+                data_obj = datetime.strptime(data, '%Y-%m-%d')
+        except ValueError:
+            data_obj = datetime.now()
+            
+    dias = {0: 'Seg', 1: 'Ter', 2: 'Qua', 3: 'Qui', 4: 'Sex', 5: 'Sab', 6: 'Dom'}
+    dia_semana_str = dias.get(data_obj.weekday(), '')
+    
+    if dia_semana_str not in ['Seg', 'Ter', 'Qua', 'Qui', 'Sex']:
+        return {
+            "data": data_obj.strftime('%d/%m/%Y'),
+            "dia_semana": dia_semana_str,
+            "horarios": []
+        }
+
+    aulas = db.scalars(
+        select(HorarioAulaExtrator)
+        .where(
+            HorarioAulaExtrator.escola_id == escola_id,
+            HorarioAulaExtrator.dia_semana == dia_semana_str
+        )
+        .order_by(HorarioAulaExtrator.horario, HorarioAulaExtrator.turma)
+    ).all()
+
+    horarios_dict = {}
+    for aula in aulas:
+        h = aula.horario
+        if h not in horarios_dict:
+            horarios_dict[h] = {}
+        
+        horarios_dict[h][aula.turma] = {
+            "disciplina": aula.disciplina,
+            "professor": aula.professor
+        }
+        
+    horarios_list = []
+    for h in sorted(horarios_dict.keys()):
+        horarios_list.append({
+            "horario": h,
+            "turmas": horarios_dict[h]
+        })
+        
+    return {
+        "data": data_obj.strftime('%d/%m/%Y'),
+        "dia_semana": dia_semana_str,
+        "horarios": horarios_list
+    }
