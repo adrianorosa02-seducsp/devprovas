@@ -35,7 +35,7 @@ def split_and_clean_schedule_df(df_original):
     if df.empty or df.iloc[0].empty:
         return all_cleaned_schedules
 
-    turma_pattern = re.compile(r'^\d[A-D](?: ?- ?[A-Z]+)?$')
+    turma_pattern = re.compile(r'^\d[A-Z](?: ?- ?[A-Z]+)?$')
     turma_sections_info = []
 
     for col_idx, value in enumerate(df.iloc[0]):
@@ -94,7 +94,7 @@ def extrair_horarios_pdf(pdf):
             tabelas = page.extract_tables()
 
         texto_pagina = page.extract_text() or ""
-        turmas_encontradas = re.findall(r"\b(\d[A-D](?: ?- ?[A-Z]+)?)\b", texto_pagina)
+        turmas_encontradas = re.findall(r"\b(\d[A-Z](?: ?- ?[A-Z]+)?)\b", texto_pagina)
 
         for t_idx, tabela in enumerate(tabelas, start=1):
             df = pd.DataFrame(tabela)
