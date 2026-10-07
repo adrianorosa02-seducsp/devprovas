@@ -116,6 +116,25 @@ def health():
         return {"status": "unhealthy", "database": "disconnected"}
 
 
+
+from pydantic import BaseModel
+
+class ConfigImportacaoUpdate(BaseModel):
+    fonte_dados: str
+
+@app.put("/escolas/{escola_id}/configuracao-importacao")
+def atualizar_configuracao_importacao(escola_id: uuid.UUID, payload: ConfigImportacaoUpdate, db: Session = Depends(get_db)):
+    config = db.query(ConfiguracaoImportacaoHorarios).filter(ConfiguracaoImportacaoHorarios.escola_id == escola_id).first()
+    if not config:
+        config = ConfiguracaoImportacaoHorarios(escola_id=escola_id, fonte_dados=payload.fonte_dados, tipo_importacao="PDF", ativo=True)
+        db.add(config)
+    else:
+        config.fonte_dados = payload.fonte_dados
+    
+    db.commit()
+    db.refresh(config)
+    return {"status": "sucesso", "mensagem": "Fonte de dados atualizada!", "fonte_dados": config.fonte_dados}
+
 @app.post("/escolas/{escola_id}/importar-horarios")
 def importar_horarios(escola_id: uuid.UUID, db: Session = Depends(get_db)):
     config = db.query(ConfiguracaoImportacaoHorarios).filter(ConfiguracaoImportacaoHorarios.escola_id == escola_id).first()

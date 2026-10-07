@@ -124,22 +124,21 @@ def obter_dfs_consolidados(pdf_url):
         table_num = report['tabela_num']
         df_to_process = report['dataframe']
 
-        if page_num in [1, 2]:
-            if df_to_process.empty or df_to_process.shape[0] < 2 or df_to_process.shape[1] < 7:
-                continue
+        if df_to_process.empty or df_to_process.shape[0] < 2 or df_to_process.shape[1] < 7:
+            continue
 
-            list_of_turma_dfs = split_and_clean_schedule_df(df_to_process)
+        list_of_turma_dfs = split_and_clean_schedule_df(df_to_process)
 
-            if not list_of_turma_dfs:
-                continue
+        if not list_of_turma_dfs:
+            continue
 
-            for turma_id, cleaned_df in list_of_turma_dfs:
-                if not cleaned_df.empty:
-                    cleaned_df['Origem'] = f"Pagina_{page_num}_Tabela_{table_num}_Turma_{turma_id}"
-                    
-                    if turma_id not in all_processed_schedules_by_turma:
-                        all_processed_schedules_by_turma[turma_id] = []
-                    all_processed_schedules_by_turma[turma_id].append(cleaned_df)
+        for turma_id, cleaned_df in list_of_turma_dfs:
+            if not cleaned_df.empty:
+                cleaned_df['Origem'] = f"Pagina_{page_num}_Tabela_{table_num}_Turma_{turma_id}"
+                
+                if turma_id not in all_processed_schedules_by_turma:
+                    all_processed_schedules_by_turma[turma_id] = []
+                all_processed_schedules_by_turma[turma_id].append(cleaned_df)
 
     consolidated_dfs = {}
     for turma_id, list_of_dfs in all_processed_schedules_by_turma.items():
